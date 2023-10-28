@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="sentry_laser" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link
+    name="IMU_Link">
+    <inertial>
+      <origin
+        xyz="0.0119420335802319 -0.00131044477857726 -0.0153665401790671"
+        rpy="0 0 0" />
+      <mass
+        value="0.0226845890584115" />
+      <inertia
+        ixx="6.5902688246115E-06"
+        ixy="9.73102298220605E-08"
+        ixz="-6.90508191446049E-07"
+        iyy="3.34425724535331E-06"
+        iyz="1.03898756503395E-07"
+        izz="9.39615099651819E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/IMU_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/IMU_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

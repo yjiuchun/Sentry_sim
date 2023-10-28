@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'Heading_Left_Front_Joint', 'Driving_Left_Front_Joint', 'Heading_Left_Back_Joint', 'Driving_Left_back_Joint', 'Heading_Right_Front_Joint', 'Driving_Right_Front_Joint', 'Heading_Right_Back_Joint', 'Driving_Right_Back_Joint', 'Yaw_Joint', 'Pitch_Joint', 'Left_Trigger_Joint', 'Right_Trigger_Joint', ]

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="sentry_laser" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link
+    name="Left_Trigger_Link">
+    <inertial>
+      <origin
+        xyz="0.000131868259327483 -2.92919655804566E-05 -0.0122980342088675"
+        rpy="0 0 0" />
+      <mass
+        value="0.0483543155713259" />
+      <inertia
+        ixx="1.49278589230398E-05"
+        ixy="-2.4786328749254E-08"
+        ixz="-5.35155234169596E-08"
+        iyy="1.48219091708572E-05"
+        iyz="1.18884825047915E-08"
+        izz="2.53514166910452E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Left_Trigger_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.113725490196078 0.113725490196078 0.113725490196078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Left_Trigger_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+    <link
+    name="Rigth_Trigger_Link">
+    <inertial>
+      <origin
+        xyz="0.000135070327744749 9.86910548915476E-07 -0.0122980327420787"
+        rpy="0 0 0" />
+      <mass
+        value="0.0483543104594858" />
+      <inertia
+        ixx="1.49333647576202E-05"
+        ixy="8.41450253409526E-10"
+        ixz="-5.48188051098506E-08"
+        iyy="1.48164032567288E-05"
+        iyz="-4.06373355968659E-10"
+        izz="2.53514162493935E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Rigth_Trigger_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.113725490196078 0.113725490196078 0.113725490196078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Rigth_Trigger_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+</robot>

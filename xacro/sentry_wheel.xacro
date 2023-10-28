@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="sentry_chassis"   xmlns:xacro="http://www.ros.org/wiki/xacro">
+<link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00225297070027259 0.0021561284245786 0.0235031309630918"
+        rpy="0 0 0" />
+      <mass
+        value="4.42503101633294" />
+      <inertia
+        ixx="0.0160955362042838"
+        ixy="-4.37751798666585E-07"
+        ixz="-3.76131129209663E-05"
+        iyy="0.00951260621260376"
+        iyz="-1.23241554900005E-05"
+        izz="0.0235407659569457" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+<link name="base_footprint">
+   </link>
+
+  <joint
+    name="footprint2baselink"
+    type="fixed">
+    <origin
+      xyz="0 0 0.3"
+      rpy="0 0 0" />
+    <parent
+      link="base_footprint" />
+    <child
+      link="base_link" />
+  </joint>
+
+
+
+  <link
+    name="Heading_Left_Front_Link">
+    <inertial>
+      <origin
+        xyz="0.000327088899147732 0.00203413083857223 -0.0346740035294639"
+        rpy="0 0 0" />
+      <mass
+        value="0.70269597713817" />
+      <inertia
+        ixx="0.000344054568245934"
+        ixy="1.44356624989042E-05"
+        ixz="4.30992500251002E-07"
+        iyy="0.000434102546909307"
+        iyz="3.89337584122031E-07"
+        izz="0.000452885587921925" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Left_Front_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Left_Front_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Heading_Left_Front_Joint"
+    type="continuous">
+    <origin
+      xyz="0.178 0.178 0.042"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Heading_Left_Front_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Driving_Left_Front_Link">
+    <inertial>
+      <origin
+        xyz="-0.00614745666963601 -0.0410307142735137 -7.63278329429795E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.2729799494341" />
+      <inertia
+        ixx="0.000310662933362954"
+        ixy="4.06306257516411E-05"
+        ixz="1.84256237395161E-19"
+        iyy="0.000575761324526438"
+        iyz="5.90527327364396E-19"
+        izz="0.000304575420247696" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Left_Front_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Left_Front_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Driving_Left_Front_Joint"
+    type="revolute">
+    <origin
+      xyz="0.0062232 0.041536 -0.0993"
+      rpy="0 0 0" />
+    <parent
+      link="Heading_Left_Front_Link" />
+    <child
+      link="Driving_Left_Front_Link" />
+    <axis
+      xyz="-0.14817 -0.98896 0" />
+    <limit lower="-1e9" upper="1e9" effort="10" velocity="70" />
+  </joint>
+
+</robot>

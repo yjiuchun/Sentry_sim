@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="sentry_yaw"   xmlns:xacro="http://www.ros.org/wiki/xacro">
+<link
+    name="Yaw_Link">
+    <inertial>
+      <origin
+        xyz="-0.0297189846737023 0.0306277119771997 0.15517250716792"
+        rpy="0 0 0" />
+      <mass
+        value="4.47556835051149" />
+      <inertia
+        ixx="0.0114045976693997"
+        ixy="-1.77303394355185E-05"
+        ixz="0.000210898162131933"
+        iyy="0.0100198248629364"
+        iyz="-1.55714247876524E-06"
+        izz="0.0140882406694329" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Yaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Yaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+      <gazebo reference="Yaw_Link">
+     <material>Gazebo/LightGrey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+ 
+</robot>

@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="sentry9">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00225297070027259 0.0021561284245786 0.0235031309630918"
+        rpy="0 0 0" />
+      <mass
+        value="4.42503101633294" />
+      <inertia
+        ixx="0.0160955362042838"
+        ixy="-4.37751798666585E-07"
+        ixz="-3.76131129209663E-05"
+        iyy="0.00951260621260376"
+        iyz="-1.23241554900005E-05"
+        izz="0.0235407659569457" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+<link name="base_footprint">
+   </link>
+
+
+  <joint
+    name="footprint2baselink"
+    type="fixed">
+    <origin
+      xyz="0 0 0.3"
+      rpy="0 0 0" />
+    <parent
+      link="base_footprint" />
+    <child
+      link="base_link" />
+  </joint>
+
+
+
+  <link
+    name="Heading_Left_Front_Link">
+    <inertial>
+      <origin
+        xyz="0.000327088899147732 0.00203413083857223 -0.0346740035294639"
+        rpy="0 0 0" />
+      <mass
+        value="0.70269597713817" />
+      <inertia
+        ixx="0.000344054568245934"
+        ixy="1.44356624989042E-05"
+        ixz="4.30992500251002E-07"
+        iyy="0.000434102546909307"
+        iyz="3.89337584122031E-07"
+        izz="0.000452885587921925" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Left_Front_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Left_Front_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Heading_Left_Front_Joint"
+    type="continuous">
+    <origin
+      xyz="0.178 0.178 0.042"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Heading_Left_Front_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Driving_Left_Front_Link">
+    <inertial>
+      <origin
+        xyz="-0.00614745666963601 -0.0410307142735137 -7.63278329429795E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.2729799494341" />
+      <inertia
+        ixx="0.000310662933362954"
+        ixy="4.06306257516411E-05"
+        ixz="1.84256237395161E-19"
+        iyy="0.000575761324526438"
+        iyz="5.90527327364396E-19"
+        izz="0.000304575420247696" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Left_Front_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Left_Front_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Driving_Left_Front_Joint"
+    type="continuous">
+    <origin
+      xyz="0.0062232 0.041536 -0.0993"
+      rpy="0 0 0" />
+    <parent
+      link="Heading_Left_Front_Link" />
+    <child
+      link="Driving_Left_Front_Link" />
+    <axis
+      xyz="-0.14817 -0.98896 0" />
+  </joint>
+  <link
+    name="Heading_Left_Back_link">
+    <inertial>
+      <origin
+        xyz="-0.00185369374070293 0.000300550149383016 -0.0339698001150252"
+        rpy="0 0 0" />
+      <mass
+        value="0.687442415270207" />
+      <inertia
+        ixx="0.00043445619263871"
+        ixy="-1.39837821126049E-05"
+        ixz="-3.89337541412287E-07"
+        iyy="0.000347356550512787"
+        iyz="4.30992933776622E-07"
+        izz="0.000463291748719571" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Left_Back_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Left_Back_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Heading_Left_Back_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.178 0.178 0.042"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Heading_Left_Back_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Driving_Left_back_Link">
+    <inertial>
+      <origin
+        xyz="0.0410307142735137 -0.00614745666963609 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.2729799494341" />
+      <inertia
+        ixx="0.000575761324526438"
+        ixy="-4.06306257516413E-05"
+        ixz="1.01045361243015E-19"
+        iyy="0.000310662933362954"
+        iyz="1.7382100922574E-19"
+        izz="0.000304575420247696" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Left_back_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Left_back_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="Driving_Left_back_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.041536 0.0062232 -0.0993"
+      rpy="0 0 0" />
+    <parent
+      link="Heading_Left_Back_link" />
+    <child
+      link="Driving_Left_back_Link" />
+    <axis
+      xyz="0.98896 -0.14817 0" />
+  </joint>
+  <link
+    name="Heading_Right_Front_link">
+    <inertial>
+      <origin
+        xyz="0.00185369374329517 -0.000300550147229545 -0.0339698001040521"
+        rpy="0 0 0" />
+      <mass
+        value="0.68744241513136" />
+      <inertia
+        ixx="0.000434456192641999"
+        ixy="-1.39837821131444E-05"
+        ixz="3.89337547879156E-07"
+        iyy="0.000347356550518619"
+        iyz="-4.30992936777688E-07"
+        izz="0.000463291748721908" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Right_Front_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.333333333333333 0.333333333333333 0.333333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Right_Front_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Heading_Right_Front_Joint"
+    type="continuous">
+    <origin
+      xyz="0.178 -0.178 0.042"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Heading_Right_Front_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Driving_Right_Front_Link">
+    <inertial>
+      <origin
+        xyz="-0.0410307142735136 0.00614745666963606 3.33066907387547E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.2729799494341" />
+      <inertia
+        ixx="0.000575761324526438"
+        ixy="-4.06306257516409E-05"
+        ixz="-2.126475495238E-18"
+        iyy="0.000310662933362954"
+        iyz="2.86832817431728E-19"
+        izz="0.000304575420247696" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Right_Front_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Right_Front_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Driving_Right_Front_Joint"
+    type="continuous">
+    <origin
+      xyz="0.041536 -0.0062232 -0.0993"
+      rpy="0 0 0" />
+    <parent
+      link="Heading_Right_Front_link" />
+    <child
+      link="Driving_Right_Front_Link" />
+    <axis
+      xyz="-0.98896 0.14817 0" />
+  </joint>
+  <link
+    name="Heading_Right_Back_Link">
+    <inertial>
+      <origin
+        xyz="-0.000280515778898149 -0.00171859968040594 -0.0337632364190828"
+        rpy="0 0 0" />
+      <mass
+        value="0.68527429688982" />
+      <inertia
+        ixx="0.000347240930609659"
+        ixy="1.39806628441215E-05"
+        ixz="-4.30009078204328E-07"
+        iyy="0.000434319886217517"
+        iyz="-3.89435384002671E-07"
+        izz="0.000463176588814637" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Right_Back_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Heading_Right_Back_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Heading_Right_Back_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.178 -0.178 0.042"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Heading_Right_Back_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Driving_Right_Back_Link">
+    <inertial>
+      <origin
+        xyz="0.00614745666963606 0.0410307142735137 2.15105711021124E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.2729799494341" />
+      <inertia
+        ixx="0.000310662933362954"
+        ixy="4.0630625751641E-05"
+        ixz="1.63280924992022E-19"
+        iyy="0.000575761324526438"
+        iyz="1.32618806047301E-18"
+        izz="0.000304575420247696" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Right_Back_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Driving_Right_Back_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Driving_Right_Back_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.0062232 -0.041536 -0.0993"
+      rpy="0 0 0" />
+    <parent
+      link="Heading_Right_Back_Link" />
+    <child
+      link="Driving_Right_Back_Link" />
+    <axis
+      xyz="0.14817 0.98896 0" />
+  </joint>
+  <link
+    name="Yaw_Link">
+    <inertial>
+      <origin
+        xyz="-0.0297189846737023 0.0306277119771997 0.15517250716792"
+        rpy="0 0 0" />
+      <mass
+        value="4.47556835051149" />
+      <inertia
+        ixx="0.0114045976693997"
+        ixy="-1.77303394355185E-05"
+        ixz="0.000210898162131933"
+        iyy="0.0100198248629364"
+        iyz="-1.55714247876524E-06"
+        izz="0.0140882406694329" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Yaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Yaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Yaw_Joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.081"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Yaw_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="Pitch_Link">
+    <inertial>
+      <origin
+        xyz="0.0636983717298516 -0.0536021170514228 0.0278206209890751"
+        rpy="0 0 0" />
+      <mass
+        value="0.792372058279168" />
+      <inertia
+        ixx="0.000664535673801091"
+        ixy="4.62476804335301E-07"
+        ixz="1.36028186071488E-05"
+        iyy="0.00149259274595659"
+        iyz="-3.38492271350782E-07"
+        izz="0.00115988290025129" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Pitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Pitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Pitch_Joint"
+    type="revolute">
+    <origin
+      xyz="0.01 0.054 0.2766"
+      rpy="0 0 0" />
+    <parent
+      link="Yaw_Link" />
+    <child
+      link="Pitch_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="Camera_Link">
+    <inertial>
+      <origin
+        xyz="-0.0274889033376683 0.000150005325815505 -0.00772423316738879"
+        rpy="0 0 0" />
+      <mass
+        value="0.0367240036538109" />
+      <inertia
+        ixx="5.21531598669864E-06"
+        ixy="4.31203587568392E-09"
+        ixz="3.05359921710556E-07"
+        iyy="3.05455837376716E-06"
+        iyz="-1.0060479635813E-08"
+        izz="3.95383253794392E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Camera_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.294117647058824 0.294117647058824 0.294117647058824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Camera_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Camera_Joint"
+    type="fixed">
+    <origin
+      xyz="0.1746 -0.0541 0.10112"
+      rpy="0 0 0" />
+    <parent
+      link="Pitch_Link" />
+    <child
+      link="Camera_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="IMU_Link">
+    <inertial>
+      <origin
+        xyz="0.0119420335802319 -0.00131044477857726 -0.0153665401790671"
+        rpy="0 0 0" />
+      <mass
+        value="0.0226845890584115" />
+      <inertia
+        ixx="6.5902688246115E-06"
+        ixy="9.73102298220605E-08"
+        ixz="-6.90508191446049E-07"
+        iyy="3.34425724535331E-06"
+        iyz="1.03898756503395E-07"
+        izz="9.39615099651819E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/IMU_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/IMU_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IMU_Joint"
+    type="fixed">
+    <origin
+      xyz="-0.030681 -0.0541 0.094939"
+      rpy="0 0 0" />
+    <parent
+      link="Pitch_Link" />
+    <child
+      link="IMU_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Laser_Link">
+    <inertial>
+      <origin
+        xyz="-0.000243768363515523 1.68373030667576E-06 0.0354698758043828"
+        rpy="0 0 0" />
+      <mass
+        value="0.124623929963422" />
+      <inertia
+        ixx="3.64034890751659E-05"
+        ixy="-6.50149904285924E-09"
+        ixz="3.15422790274066E-07"
+        iyy="3.96287690028152E-05"
+        iyz="-2.91455786600563E-09"
+        izz="5.80811525687162E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Laser_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Laser_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Laser_Joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.041503"
+      rpy="0 0 0" />
+    <parent
+      link="Yaw_Link" />
+    <child
+      link="Laser_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Left_Trigger_Link">
+    <inertial>
+      <origin
+        xyz="0.000131868259327483 -2.92919655804566E-05 -0.0122980342088675"
+        rpy="0 0 0" />
+      <mass
+        value="0.0483543155713259" />
+      <inertia
+        ixx="1.49278589230398E-05"
+        ixy="-2.4786328749254E-08"
+        ixz="-5.35155234169596E-08"
+        iyy="1.48219091708572E-05"
+        iyz="1.18884825047915E-08"
+        izz="2.53514166910452E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Left_Trigger_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.113725490196078 0.113725490196078 0.113725490196078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Left_Trigger_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Left_Trigger_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.1085 0.054456 0.18175"
+      rpy="0 0 0" />
+    <parent
+      link="Yaw_Link" />
+    <child
+      link="Left_Trigger_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="Rigth_Trigger_Link">
+    <inertial>
+      <origin
+        xyz="0.000135070327744749 9.86910548915476E-07 -0.0122980327420787"
+        rpy="0 0 0" />
+      <mass
+        value="0.0483543104594858" />
+      <inertia
+        ixx="1.49333647576202E-05"
+        ixy="8.41450253409526E-10"
+        ixz="-5.48188051098506E-08"
+        iyy="1.48164032567288E-05"
+        iyz="-4.06373355968659E-10"
+        izz="2.53514162493935E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Rigth_Trigger_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.113725490196078 0.113725490196078 0.113725490196078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Rigth_Trigger_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Right_Trigger_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.1085 -0.054456 0.18175"
+      rpy="0 0 0" />
+    <parent
+      link="Yaw_Link" />
+    <child
+      link="Rigth_Trigger_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+
+    <gazebo reference="base_link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Left_Front_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Left_Back_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Right_Front_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Right_Back_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Driving_Left_Front_Link">
+     <material>Gazebo/Black</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Driving_Left_back_Link">
+     <material>Gazebo/Black</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+    <gazebo reference="Driving_Right_Front_Link">
+     <material>Gazebo/Black</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Driving_Right_Back_Link">
+     <material>Gazebo/Black</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Laser_Link">
+     <material>Gazebo/Red</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+    <gazebo reference="Yaw_Link">
+     <material>Gazebo/LightGrey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+     <gazebo reference="Pitch_Link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+<!--Kinect Camera-->
+<gazebo reference="Camera_Link">
+            <sensor type="depth" name="Camera">
+                <always_on>true</always_on>
+                <update_rate>20.0</update_rate>
+                <camera>
+                    <horizontal_fov>1</horizontal_fov>
+                    <image>
+                        <format>R8G8B8</format>
+                        <width>640</width>
+                        <height>480</height>
+                    </image>
+                    <clip>
+                        <near>0.05</near>
+                        <far>8.0</far>
+                    </clip>
+                </camera>
+                <plugin name="kinect_Camera_controller" filename="libgazebo_ros_openni_kinect.so">
+                    <cameraName>Kinect_camera</cameraName>
+                    <alwaysOn>true</alwaysOn>
+                    <updateRate>10</updateRate>
+                    <imageTopicName>rgb/image_raw</imageTopicName>
+                    <depthImageTopicName>depth/image_raw</depthImageTopicName>
+                    <pointCloudTopicName>depth/points</pointCloudTopicName>
+                    <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+                    <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+                    <frameName>Camera_Link</frameName>
+                    <baseline>0.1</baseline>
+                    <distortion_k1>0.0</distortion_k1>
+                    <distortion_k2>0.0</distortion_k2>
+                    <distortion_k3>0.0</distortion_k3>
+                    <distortion_t1>0.0</distortion_t1>
+                    <distortion_t2>0.0</distortion_t2>
+                    <pointCloudCutoff>0.4</pointCloudCutoff>
+                </plugin>
+            </sensor>
+        </gazebo>
+</robot>
