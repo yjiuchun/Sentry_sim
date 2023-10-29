@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="sentry" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find sentry9)/xacro/sentry_chassis.xacro" />
+    <xacro:include filename="$(find sentry9)/xacro/sentry_chassis_new.xacro" />
     <xacro:include filename="$(find sentry9)/xacro/sentry_yaw.xacro" />
-    <xacro:include filename="$(find sentry9)/xacro/sentry_pitch.xacro" />
     <!--xacro:include filename="$(find sentry9)/xacro/sentry_laser.xacro" /-->
+    <xacro:include filename="$(find sentry9)/xacro/sentry_pitch.xacro" />
     <xacro:include filename="$(find sentry9)/xacro/sentry_camera.xacro" />
     <xacro:include filename="$(find sentry9)/xacro/sentry_imu.xacro" />
     <xacro:include filename="$(find sentry9)/xacro/sentry_trigger.xacro" />
     <xacro:include filename="$(find sentry9)/xacro/livox_sim.xacro"/>
+    <xacro:include filename="$(find sentry9)/xacro/sentry_wheel.xacro" />
+
     <!-- Yaw_Joint -->
   <joint
     name="Yaw_Joint" type="continuous">
@@ -65,6 +67,17 @@
     <child link="Rigth_Trigger_Link" />
     <axis xyz="0 0 -1" />
   </joint>
+
+
+<xacro:sentry_wheel heading_name="Heading_Left_Front" driving_name="Driving_Left_Front" x='0.178' y= '0.178' z='0.042' />
+<xacro:sentry_wheel heading_name="Heading_Left_Back" driving_name="Driving_Left_Back" x='-0.178' y= '0.178' z='0.042' />
+<xacro:sentry_wheel heading_name="Heading_Right_Front" driving_name="Driving_Right_Front" x='0.178' y= '-0.178' z='0.042' />
+<xacro:sentry_wheel heading_name="Heading_Right_Back" driving_name="Driving_Right_Back" x='-0.178' y= '-0.178' z='0.042' />
+
+
+
+
+<!-- transmission for left_back_wheel-->
 
 
 
