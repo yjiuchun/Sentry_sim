@@ -74,15 +74,51 @@
 <xacro:sentry_wheel heading_name="Heading_Right_Front" driving_name="Driving_Right_Front" x='0.178' y= '-0.178' z='0.042' />
 <xacro:sentry_wheel heading_name="Heading_Right_Back" driving_name="Driving_Right_Back" x='-0.178' y= '-0.178' z='0.042' />
 
+ <gazebo reference="base_link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
+   <gazebo reference="Heading_Left_Front_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
+   <gazebo reference="Heading_Left_Back_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
-<!-- transmission for left_back_wheel-->
+   <gazebo reference="Heading_Right_Front_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
+   <gazebo reference="Heading_Right_Back_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
+   <gazebo reference="Driving_Left_Front_Link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
+   <gazebo reference="Driving_Left_back_Link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
+    <gazebo reference="Driving_Right_Front_Link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
 
+   <gazebo reference="Driving_Right_Back_Link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+ 
     <!-- controller -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
