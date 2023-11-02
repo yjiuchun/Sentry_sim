@@ -1,0 +1,8 @@
+prefix=/home/yjc/sentry_sim_ws/devel
+
+Name: sentry_laser_sim
+Description: Description of sentry_laser_sim
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

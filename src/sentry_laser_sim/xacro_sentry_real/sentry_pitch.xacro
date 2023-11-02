@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="sentry_pitch" xmlns:xacro="http://www.ros.org/wiki/xacro">
+ <link
+    name="Pitch_Link">
+    <inertial>
+      <origin
+        xyz="0.0636983717298516 -0.0536021170514228 0.0278206209890751"
+        rpy="0 0 0" />
+      <mass
+        value="0.792372058279168" />
+      <inertia
+        ixx="0.000664535673801091"
+        ixy="4.62476804335301E-07"
+        ixz="1.36028186071488E-05"
+        iyy="0.00149259274595659"
+        iyz="-3.38492271350782E-07"
+        izz="0.00115988290025129" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Pitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry9/meshes/Pitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+       <gazebo reference="Pitch_Link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+ 
+</robot>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="sentry" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find sentry9)/xacro/sentry_chassis_new.xacro" />
+    <xacro:include filename="$(find sentry9)/xacro/sentry_yaw.xacro" />
+    <!--xacro:include filename="$(find sentry9)/xacro/sentry_laser.xacro" /-->
+    <xacro:include filename="$(find sentry9)/xacro/sentry_pitch.xacro" />
+    <xacro:include filename="$(find sentry9)/xacro/sentry_camera.xacro" />
+    <xacro:include filename="$(find sentry9)/xacro/sentry_imu.xacro" />
+    <xacro:include filename="$(find sentry9)/xacro/sentry_trigger.xacro" />
+    <xacro:include filename="$(find sentry9)/xacro/livox_sim.xacro"/>
+    <xacro:include filename="$(find sentry9)/xacro/sentry_wheel.xacro" />
+
+    <!-- Yaw_Joint -->
+  <joint
+    name="Yaw_Joint" type="continuous">
+    <origin xyz="0 0 0.081" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="Yaw_Link" />
+    <axis xyz="0 0 -1" />
+  </joint>
+
+  <!--Pitch_Joint-->
+    <joint name="Pitch_Joint" type="revolute">
+    <origin xyz="0.01 0.054 0.2766" rpy="0 0 0" />
+    <parent link="Yaw_Link" />
+    <child link="Pitch_Link" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1" upper="1" effort="1"  velocity="1" />
+  </joint>
+
+<!--Laser_Joint-->
+  <joint name="Laser_Joint" type="fixed">
+    <origin xyz="0 0 0.041503" rpy="0 0 0" />
+    <parent link="Yaw_Link" />
+    <child link="Laser_Link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!--Camera_Joint-->
+<joint name="Camera_Joint" type="fixed">
+    <origin xyz="0.1746 -0.0541 0.10112" rpy="0 0 0" />
+    <parent link="Pitch_Link" />
+    <child link="Camera_Link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!--Imu_Joint-->
+  <joint name="IMU_Joint" type="fixed">
+    <origin xyz="-0.030681 -0.0541 0.094939" rpy="0 0 0" />
+    <parent link="Pitch_Link" />
+    <child link="IMU_Link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+<!--Left_trigger_Joint-->
+<joint name="Left_Trigger_Joint" type="continuous">
+    <origin xyz="-0.1085 0.054456 0.18175" rpy="0 0 0" />
+    <parent link="Yaw_Link" />
+    <child link="Left_Trigger_Link" />
+    <axis xyz="0 0 -1" />
+  </joint>
+<!--Right_Trigger_Joint-->
+  <joint name="Right_Trigger_Joint" type="continuous">
+    <origin xyz="-0.1085 -0.054456 0.18175" rpy="0 0 0" />
+    <parent link="Yaw_Link" />
+    <child link="Rigth_Trigger_Link" />
+    <axis xyz="0 0 -1" />
+  </joint>
+
+
+<xacro:sentry_wheel heading_name="Heading_Left_Front" driving_name="Driving_Left_Front" x='0.178' y= '0.178' z='0.042' />
+<xacro:sentry_wheel heading_name="Heading_Left_Back" driving_name="Driving_Left_Back" x='-0.178' y= '0.178' z='0.042' />
+<xacro:sentry_wheel heading_name="Heading_Right_Front" driving_name="Driving_Right_Front" x='0.178' y= '-0.178' z='0.042' />
+<xacro:sentry_wheel heading_name="Heading_Right_Back" driving_name="Driving_Right_Back" x='-0.178' y= '-0.178' z='0.042' />
+
+  <xacro:joint_transmission prefix="Yaw"/>
+  <xacro:joint_transmission prefix="Pitch"/>
+
+ <gazebo reference="base_link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Left_Front_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Left_Back_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Right_Front_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Heading_Right_Back_Link">
+     <material>Gazebo/White</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Driving_Left_Front_Link">
+     <material>Gazebo/Red</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Driving_Left_Back_Link">
+     <material>Gazebo/Green</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+    <gazebo reference="Driving_Right_Front_Link">
+     <material>Gazebo/Blue</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+
+   <gazebo reference="Driving_Right_Back_Link">
+     <material>Gazebo/Grey</material>
+     <turnGravityOff>false</turnGravityOff>
+ </gazebo>
+ 
+
+ <gazebo reference="IMU_Link">
+        <gravity>true</gravity>
+        <sensor name="imu_sensor" type="imu">
+            <always_on>true</always_on>
+            <update_rate>100</update_rate>
+            <visualize>true</visualize>
+            <topic>__default_topic__</topic>
+            <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+                <topicName>imu</topicName>
+                <bodyName>imu</bodyName>
+                <updateRateHZ>100.0</updateRateHZ>
+                <gaussianNoise>0.0</gaussianNoise>
+                <xyzOffset>0 0 0</xyzOffset>     
+                <rpyOffset>0 0 0</rpyOffset>
+                <frameName>imu</frameName>        
+            </plugin>
+            <pose>0 0 0 0 0 0</pose>
+        </sensor>
+    </gazebo>
+    
+    <!-- controller -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+                <rosDebugLevel>Debug</rosDebugLevel>
+                <publishWheelTF>true</publishWheelTF>
+                <robotNamespace>/sentry</robotNamespace>
+                <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+                <publishTf>1</publishTf>
+                <publishWheelJointState>true</publishWheelJointState>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>100.0</updateRate>
+                <legacyMode>true</legacyMode>
+                <odometryFrame>odom</odometryFrame> 
+                <odometryTopic>odom</odometryTopic> 
+    </plugin>
+  </gazebo> 
+
+</robot>

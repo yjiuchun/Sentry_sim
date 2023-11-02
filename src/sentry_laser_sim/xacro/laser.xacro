@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="base_link">
+<xacro:include filename="$(find sentry_laser_sim)/xacro/fun_define.xacro"/>
+
+<!--laser_link-->
+<xacro:mylink_tri myname="laser_link" l="0.1" w="0.1" h="0.05" x="0" y="0" z="0" wx="0" wy="0" wz="0" color="red" r="0" g="0" b="0" a="1" mass="1" ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+<!--base_footprint-->
+
+<xacro:property name="M_PI" value="3.14159"/> 
+  <xacro:property name="laser_min_range" value="0.1"/>
+  <xacro:property name="laser_max_range" value="200.0"/>
+  <xacro:property name="ros_topic" value="scan"/>
+  <xacro:property name="samples" value="10000"/>
+  <xacro:property name="downsample" value="0"/>
+  
+  <xacro:macro name="null_inertial">
+    <inertial>
+      <mass value="0.1"/>
+    <inertia ixx="0.01" ixy="0" ixz="0"
+          iyy="0.01" iyz="0"
+          izz="0.01"/>
+    </inertial>
+
+  </xacro:macro>
+  <xacro:macro name="Livox_Mid_gazebo_sensor" params="visualize:=True update_rate:=10 resolution:=0.002 noise_mean:=0.0 noise_stddev:=0.01 name:=laser">
+    <gazebo reference="${name}_link">
+      <sensor type="ray" name="livox_${name}">
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>${visualize}</visualize>
+        <update_rate>10</update_rate>
+        <plugin name="gazebo_ros_laser_controller" filename="liblivox_laser_simulation.so">
+			<ray>
+			  <scan>
+				<horizontal>
+				<samples>100</samples>
+				<resolution>1</resolution>
+				<min_angle>${0}</min_angle>
+				<max_angle>${2*M_PI}</max_angle>
+				</horizontal>
+				<vertical>
+				<samples>50</samples>
+				<resolution>1</resolution>
+				<min_angle>${-7.22/180*M_PI}</min_angle>
+				<max_angle>${55.22/180*M_PI}</max_angle>
+				</vertical>
+			  </scan>
+			  <range>
+				<min>${laser_min_range}</min>
+				<max>${laser_max_range}</max>
+				<resolution>${resolution}</resolution>
+			  </range>
+			  <noise>
+				<type>gaussian</type>
+				<mean>${noise_mean}</mean>
+				<stddev>${noise_stddev}</stddev>
+			  </noise>
+			</ray>
+          <visualize>${visualize}</visualize>
+		  <samples>${samples}</samples>
+		  <downsample>${downsample}</downsample>
+		  <csv_file_name>package://sentry9/scan_mode/mid360.csv</csv_file_name>
+		  <ros_topic>${ros_topic}</ros_topic>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+  
+    <xacro:Livox_Mid_gazebo_sensor name="laser" visualize="true"/>
+
+
+
+</robot>

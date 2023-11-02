@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wheel">
+<xacro:include filename="$(find sentry_laser_sim)/xacro/fun_define.xacro"/>
+
+<!--wheel_l_f-->
+<xacro:mylink_cyl link_name="wheel_l_f" l="0.05" r_="0.05" x="0" y="0" z="0" wx="${M_PI/2}" wy="0" wz="0" color="bule" r="0" g="0" b="255" a="1" mass="10" ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+<gazebo reference="wheel_l_f">
+        <material>Gazebo/Red</material>
+</gazebo>
+
+<!--wheel_r_f-->
+<xacro:mylink_cyl link_name="wheel_r_f" l="0.05" r_="0.05" x="0" y="0" z="0" wx="${M_PI/2}" wy="0" wz="0" color="bule" r="255" g="0" b="255" a="1" mass="10" ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+<gazebo reference="wheel_r_f">
+        <material>Gazebo/Red</material>
+</gazebo>
+
+<!--wheel_l_b-->
+<xacro:mylink_cyl link_name="wheel_l_b" l="0.05" r_="0.05" x="0" y="0" z="0" wx="${M_PI/2}" wy="0" wz="0" color="bule" r="0" g="0" b="255" a="1" mass="10" ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+<gazebo reference="wheel_l_b">
+        <material>Gazebo/Red</material>
+</gazebo>
+
+<!--wheel_r_b-->
+<xacro:mylink_cyl link_name="wheel_r_b" l="0.05" r_="0.05" x="0" y="0" z="0" wx="${M_PI/2}" wy="0" wz="0" color="bule" r="0" g="0" b="0" a="1" mass="10" ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+<gazebo reference="wheel_r_b">
+        <material>Gazebo/Red</material>
+</gazebo>
+
+</robot>

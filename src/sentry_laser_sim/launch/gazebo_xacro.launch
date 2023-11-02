@@ -1,0 +1,37 @@
+<launch>
+        <!-- 设置launch文件的参数 -->
+    <arg name="world_name" value="$(find sentry_laser_sim)/world/rmuc_23.world"/>
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+
+        <!-- 运行gazebo仿真环境 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+
+	<!-- 加载机器人URDF/Xacro模型 -->
+    <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find sentry_laser_sim)/xacro_sentry_real/sentry.xacro'" />
+
+	<param name="robot_description" command="$(arg urdf_file)" />
+	<param name="use_gui" value="$(arg gui)"/>
+
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="20.0" />
+    </node-->
+
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model sentry" />
+<!--发布静态坐标-->
+  <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.0 0 0 0 1 livox_Laser base_footprint 100" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sentry_kinematics_sim)/rviz/rviz.rviz" required="true" />
+
+</launch>
