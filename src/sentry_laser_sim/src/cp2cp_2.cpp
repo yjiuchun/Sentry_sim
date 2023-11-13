@@ -19,7 +19,7 @@ ros::Publisher pubLaserCloud;
         laserCloudMsg.header.stamp = mmwCloudMsg->header.stamp;
         laserCloudMsg.header.frame_id = "laser_link";
         pubLaserCloud.publish(laserCloudMsg);
-        // cout << "hello LASER: " << laserCloudMsg.header.stamp << endl;
+        std::cout << "hello LASER: " << mmwCloudMsg.header.frame_id << std::endl;
     }
 
 

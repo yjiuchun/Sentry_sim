@@ -24,8 +24,8 @@
   </xacro:macro>
   <xacro:macro name="Livox_Mid_gazebo_sensor" params="visualize:=True update_rate:=10 resolution:=0.002 noise_mean:=0.0 noise_stddev:=0.01 name:=laser">
     <gazebo reference="${name}_link">
-      <sensor type="ray" name="livox_${name}">
-        <pose>0 0 0 0 0 0</pose>
+      <sensor type="ray" name="${name}_livox">
+        <pose>0 0 3 0 0 0</pose>
         <visualize>${visualize}</visualize>
         <update_rate>10</update_rate>
         <plugin name="gazebo_ros_laser_controller" filename="liblivox_laser_simulation.so">

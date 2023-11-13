@@ -31,7 +31,9 @@
 
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model sentry" />
 <!--发布静态坐标-->
-  <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.0 0 0 0 1 sentry::base_footprint odom 100" />
+  <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform0" args="0 0 0.0 0 0 0 1 sentry::base_footprint odom 100" />
+    <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.0 0 0 0 1 laser_link laser_livox 100" />
+
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sentry_laser_sim)/rviz/test.rviz" required="true" />
 
 </launch>

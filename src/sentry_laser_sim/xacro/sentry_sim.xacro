@@ -21,7 +21,7 @@
 
 
 <!--base_footprint->base_link-->
-<xacro:myjoint_fixed joint_name="base_footprint_joint" joint_type="fixed" x="0" y="0" z="0.5" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link"/>
+<xacro:myjoint_fixed joint_name="base_footprint_joint" joint_type="fixed" x="0" y="0" z="0" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link"/>
 
 <!--base_link->camera_link-->
 <xacro:myjoint_fixed joint_name="imu_joint" joint_type="fixed" x="0.175" y="0" z="0" wx="0" wz="0" wy="0" parent_link="base_link" child_link="imu_link"/>

@@ -6,8 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1/Status1
-        - /PointCloud1/Status1
+        - /PointCloud1
       Splitter Ratio: 0.5
     Tree Height: 345
   - Class: rviz/Selection
@@ -28,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: PointCloud
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -73,15 +72,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_link:
+        imu_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        fake_link_kinect:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         laser_link:
           Alpha: 1
           Show Axes: false
@@ -124,9 +119,7 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        camera_link:
-          Value: true
-        fake_link_kinect:
+        imu_link:
           Value: true
         laser_link:
           Value: true
@@ -150,25 +143,24 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        odom:
-          base_footprint:
-            base_link:
-              camera_link:
-                fake_link_kinect:
-                  {}
-              laser_link:
-                {}
-              wheel_l_b:
-                {}
-              wheel_l_f:
-                {}
-              wheel_r_b:
-                {}
-              wheel_r_f:
-                {}
         sentry::base_footprint:
           livox_laser:
             {}
+          odom:
+            base_footprint:
+              base_link:
+                imu_link:
+                  {}
+                laser_link:
+                  {}
+                wheel_l_b:
+                  {}
+                wheel_l_f:
+                  {}
+                wheel_r_b:
+                  {}
+                wheel_r_f:
+                  {}
       Update Interval: 0
       Value: true
     - Class: rviz/Axes
@@ -209,25 +201,25 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
+        Max Value: 1.4850380420684814
+        Min Value: -0.8429194688796997
         Value: true
       Axis: Z
       Channel Name: intensity
       Class: rviz/PointCloud
       Color: 255; 255; 255
-      Color Transformer: ""
+      Color Transformer: AxisColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Min Color: 0; 0; 0
       Name: PointCloud
-      Position Transformer: ""
+      Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.029999999329447746
       Style: Flat Squares
       Topic: /scan
       Unreliable: false
@@ -262,7 +254,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 16.441110610961914
+      Distance: 23.09857749938965
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
