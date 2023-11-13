@@ -19,7 +19,7 @@ ros::Publisher pubLaserCloud;
         laserCloudMsg.header.stamp = mmwCloudMsg->header.stamp;
         laserCloudMsg.header.frame_id = "laser_link";
         pubLaserCloud.publish(laserCloudMsg);
-        std::cout << "hello LASER: " << mmwCloudMsg.header.frame_id << std::endl;
+        //std::cout << "hello LASER: " << mmwCloudMsg.header.frame_id << std::endl;
     }
 
 
@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "cp2cp_2_node");
     ros::NodeHandle nh;
-    subMMWCloud = nh.subscribe<sensor_msgs::PointCloud>("/scan", 2000, &mmwHandler);
-    pubLaserCloud = nh.advertise<sensor_msgs::PointCloud2>("/velodyne_points", 2000);
+    subMMWCloud = nh.subscribe<sensor_msgs::PointCloud>("/scan1", 2000, &mmwHandler);
+    pubLaserCloud = nh.advertise<sensor_msgs::PointCloud2>("/scan2", 2000);
     ROS_INFO("RUNING....");
     ros::Rate loop_rate(10); // 设置循环的频率，这里是10Hz
     while (ros::ok())
