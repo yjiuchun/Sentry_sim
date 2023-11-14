@@ -28,11 +28,13 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
         <param name="publish_frequency" type="double" value="20.0" />
     </node>
-
+  <!--运行cloudpoint to cloudpoint2 节点-->
+  <node name="cp2cp_2_node" pkg="sentry_laser_sim" type="cp2cp_2"/>
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model sentry" />
 <!--发布静态坐标-->
   <!--node pkg="tf" type="static_transform_publisher" name="livox_tf_transform0" args="0 0 0.0 0 0 0 1 sentry::base_footprint odom 100" />
     <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.0 0 0 0 1 laser_link laser_livox 100" /-->
+    <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.05 0 0 0 1 sentry::base_footprint laser_livox 100" />
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sentry_laser_sim)/rviz/test.rviz" required="true" />
 

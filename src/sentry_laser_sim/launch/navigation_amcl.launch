@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+
+<!--参数-->
+
+<!--地图文件yaml-->
+<arg name="map_file" default="$(find sentry_laser_sim)/map/rm_map1.yaml"/>
+
+
+
+<!--运行map_server节点,加载地图-->
+<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="map"/>
+</node>
+
+<!--运行amcl节点-->
+    <include file="$(find amcl)/examples/amcl_omni.launch">
+    </include>  
+
+    <!-- 对于虚拟定位，需要设置一个/odom与/map之间的静态坐标变换 -->
+    <!--node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 /map /odom 100" /-->
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	<param name="controller_frequency" value="10.0"/> 
+    	<param name="controller_patiente" value="15.0"/>
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/local_costmap_params.yaml" command="load"/>
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/global_costmap_params.yaml" command="load"/>
+
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/base_local_planner_params.yaml" command="load"/>
+    </node>
+<param name="/amcl/initial_pose_x"            value="0.0"/>
+<param name="/amcl/initial_pose_y"            value="0.0"/>
+<param name="/amcl/initial_pose_a"            value="0.0"/>
+
+
+</launch>

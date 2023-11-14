@@ -1,0 +1,55 @@
+#obstacle_range: 2.5
+#raytrace_range: 3.0
+#footprint: [[x0, y0], [x1, y1], ... [xn, yn]]
+#robot_radius: ir_of_robot
+#robot_radius: 0.35
+#inflation_radius: 0.1
+ 
+#observation_sources: rplidar
+ 
+#rplidar: {sensor_frame: laser_link, data_type: LaserScan, topic: topic_name, marking: true, clearing: true}
+
+# 如果机器人是圆的可以直接设置robot_radius参数
+#robot_radius: 0.2 
+# 如果机器人不是圆的设置footpoint参数     
+footprint: [[-0.1, 0.15], [0.1, 0.15], [0.1, -0.15], [-0.1, -0.15]]
+# 机器人轮廓边缘
+footprint_padding: 0.00
+# tf坐标转换时最大容忍的时间
+transform_tolerance: 2.0
+# 地图类型
+map_type: costmap
+
+always_send_full_costmap: true  #true
+
+# 障碍地图层 需要开启
+obstacle_layer:
+ enabled: True
+ # 只能设置为0或1，用来更新地图上的代价值，一般设置为1。
+ combination_method: 1
+ # false->地图上只分为致命碰撞区域和自由区域。
+ # true->地图上分为致命碰撞，自由区域和未知区域。
+ track_unknown_space: true
+ # 机器人检测障碍物的最大范围
+ # 超过该范围的障碍物，并不进行检测，只有靠近到该范围内才把该障碍物当作影响路径规划和移动的障碍物;
+ obstacle_range: 2.5
+ # 实时清除代价地图上的障碍物的最大范围，更新可自由移动的空间数据。
+ # 假如设置该值为3米，那么就意味着在3米内的障碍物，本来开始时是有的，但是本次检测却没有了，那么就需要在代价地图上来更新，将旧障碍物的空间标记为可以自由移动的空间。
+ raytrace_range: 3.5
+ # 膨胀半径
+ inflation_radius: 0.00
+
+# 观察来源
+# 设置导航中所使用的传感器，这里可以用逗号形式来区分开很多个传感器，例如激光雷达，碰撞传感器，超声波传感器等。
+ observation_sources: laser_scan_sensor
+ # making->是否这个观察用来标记障碍物
+ # clearing->是否这个观察用来清除空闲空间
+ laser_scan_sensor: {data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+
+# 静态地图层
+static_layer:
+  enabled:              true
+  map_topic:            "map"
+
+ 
+
