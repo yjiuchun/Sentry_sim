@@ -1,0 +1,7 @@
+digraph G {
+"livox_lidar::link" -> "laser_livox"[label="Broadcaster: /gazebo\nAverage rate: 10.352 Hz\nMost recent transform: 905.453 ( 0.019 sec old)\nBuffer length: 2.898 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 905.472"[ shape=plaintext ] ;
+ }->"livox_lidar::link";
+}
