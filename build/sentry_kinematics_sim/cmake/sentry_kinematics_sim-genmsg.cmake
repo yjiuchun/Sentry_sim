@@ -2,7 +2,7 @@
 
 message(STATUS "sentry_kinematics_sim: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Isentry_kinematics_sim:/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Isentry_kinematics_sim:/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,9 +17,9 @@ add_custom_target(sentry_kinematics_sim_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
+get_filename_component(_filename "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
 add_custom_target(_sentry_kinematics_sim_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "sentry_kinematics_sim" "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "sentry_kinematics_sim" "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg" ""
 )
 
 #
@@ -29,7 +29,7 @@ add_custom_target(_sentry_kinematics_sim_generate_messages_check_deps_${_filenam
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(sentry_kinematics_sim
-  "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
+  "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/sentry_kinematics_sim
@@ -49,7 +49,7 @@ add_custom_target(sentry_kinematics_sim_generate_messages_cpp
 add_dependencies(sentry_kinematics_sim_generate_messages sentry_kinematics_sim_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
+get_filename_component(_filename "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
 add_dependencies(sentry_kinematics_sim_generate_messages_cpp _sentry_kinematics_sim_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -62,7 +62,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sentry_kinematics_sim_generate_mess
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(sentry_kinematics_sim
-  "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
+  "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/sentry_kinematics_sim
@@ -82,7 +82,7 @@ add_custom_target(sentry_kinematics_sim_generate_messages_eus
 add_dependencies(sentry_kinematics_sim_generate_messages sentry_kinematics_sim_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
+get_filename_component(_filename "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
 add_dependencies(sentry_kinematics_sim_generate_messages_eus _sentry_kinematics_sim_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -95,7 +95,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sentry_kinematics_sim_generate_mess
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(sentry_kinematics_sim
-  "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
+  "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/sentry_kinematics_sim
@@ -115,7 +115,7 @@ add_custom_target(sentry_kinematics_sim_generate_messages_lisp
 add_dependencies(sentry_kinematics_sim_generate_messages sentry_kinematics_sim_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
+get_filename_component(_filename "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
 add_dependencies(sentry_kinematics_sim_generate_messages_lisp _sentry_kinematics_sim_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -128,7 +128,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sentry_kinematics_sim_generate_mess
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(sentry_kinematics_sim
-  "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
+  "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/sentry_kinematics_sim
@@ -148,7 +148,7 @@ add_custom_target(sentry_kinematics_sim_generate_messages_nodejs
 add_dependencies(sentry_kinematics_sim_generate_messages sentry_kinematics_sim_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
+get_filename_component(_filename "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
 add_dependencies(sentry_kinematics_sim_generate_messages_nodejs _sentry_kinematics_sim_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -161,7 +161,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sentry_kinematics_sim_generate_mess
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(sentry_kinematics_sim
-  "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
+  "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/sentry_kinematics_sim
@@ -181,7 +181,7 @@ add_custom_target(sentry_kinematics_sim_generate_messages_py
 add_dependencies(sentry_kinematics_sim_generate_messages sentry_kinematics_sim_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/yjc/sentry_sim_ws/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
+get_filename_component(_filename "/home/yjc/Sentry_sim/src/sentry_kinematics_sim/msg/cmd_sentry.msg" NAME_WE)
 add_dependencies(sentry_kinematics_sim_generate_messages_py _sentry_kinematics_sim_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -238,7 +238,7 @@ if(TARGET std_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/sentry_kinematics_sim)
-  install(CODE "execute_process(COMMAND \"/usr/bin/python2\" -m compileall \"${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/sentry_kinematics_sim\")")
+  install(CODE "execute_process(COMMAND \"/usr/bin/python3\" -m compileall \"${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/sentry_kinematics_sim\")")
   # install generated code
   install(
     DIRECTORY ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/sentry_kinematics_sim

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
+  "/home/yjc/Sentry_sim/devel/share/common-lisp/ros/sentry_kinematics_sim/msg/cmd_sentry.lisp"
   "CMakeFiles/sentry_kinematics_sim_generate_messages_lisp"
-  "/home/yjc/sentry_sim_ws/devel/share/common-lisp/ros/sentry_kinematics_sim/msg/cmd_sentry.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

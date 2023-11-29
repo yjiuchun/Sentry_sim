@@ -1,4 +1,13 @@
-测试环境:ubuntu 18.04 melodic 
+测试环境1:ubuntu 18.04 melodic 
+测试环境2:ubunut 20.04 neotic
+	1) fatal error: ignition/math4/ignition/math.hh: 没有那个文件或目录
+
+		sudo apt-get install libignition-math4-dev
+		
+	2) 出现命名空间的一大堆问题
+		修改livox_laser_simulation功能包的cmakelistc++为17
+		（ubuntu20.04，gazebo11）
+
 注意修改:/sentry_sim_ws/src/sentry_laser_sim/world/rmuc_23.world 文件中的路径 107 & 129 行
 
 1.livox_laser_simulation

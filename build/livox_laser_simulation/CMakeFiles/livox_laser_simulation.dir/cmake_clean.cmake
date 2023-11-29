@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/livox_laser_simulation.dir/src/livox_points_plugin.cpp.o"
+  "/home/yjc/Sentry_sim/devel/lib/liblivox_laser_simulation.pdb"
+  "/home/yjc/Sentry_sim/devel/lib/liblivox_laser_simulation.so"
   "CMakeFiles/livox_laser_simulation.dir/src/livox_ode_multiray_shape.cpp.o"
-  "/home/yjc/sentry_sim_ws/devel/lib/liblivox_laser_simulation.pdb"
-  "/home/yjc/sentry_sim_ws/devel/lib/liblivox_laser_simulation.so"
+  "CMakeFiles/livox_laser_simulation.dir/src/livox_points_plugin.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

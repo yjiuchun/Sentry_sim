@@ -1,0 +1,8 @@
+prefix=/home/yjc/Sentry_sim/devel
+
+Name: SimpleSentry
+Description: Description of SimpleSentry
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

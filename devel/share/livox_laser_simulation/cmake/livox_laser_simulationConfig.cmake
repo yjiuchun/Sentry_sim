@@ -67,14 +67,14 @@ set(livox_laser_simulation_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(livox_laser_simulation_SOURCE_PREFIX /home/yjc/sentry_sim_ws/src/livox_laser_simulation)
-  set(livox_laser_simulation_DEVEL_PREFIX /home/yjc/sentry_sim_ws/devel)
+  set(livox_laser_simulation_SOURCE_PREFIX /home/yjc/Sentry_sim/src/livox_laser_simulation)
+  set(livox_laser_simulation_DEVEL_PREFIX /home/yjc/Sentry_sim/devel)
   set(livox_laser_simulation_INSTALL_PREFIX "")
   set(livox_laser_simulation_PREFIX ${livox_laser_simulation_DEVEL_PREFIX})
 else()
   set(livox_laser_simulation_SOURCE_PREFIX "")
   set(livox_laser_simulation_DEVEL_PREFIX "")
-  set(livox_laser_simulation_INSTALL_PREFIX /home/yjc/sentry_sim_ws/install)
+  set(livox_laser_simulation_INSTALL_PREFIX /home/yjc/Sentry_sim/install)
   set(livox_laser_simulation_PREFIX ${livox_laser_simulation_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(livox_laser_simulation_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/yjc/sentry_sim_ws/src/livox_laser_simulation/include " STREQUAL " ")
+if(NOT "/home/yjc/Sentry_sim/src/livox_laser_simulation/include " STREQUAL " ")
   set(livox_laser_simulation_INCLUDE_DIRS "")
-  set(_include_dirs "/home/yjc/sentry_sim_ws/src/livox_laser_simulation/include")
+  set(_include_dirs "/home/yjc/Sentry_sim/src/livox_laser_simulation/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/yjc/sentry_sim_ws/src/livox_laser_simulation/include " STREQUAL " 
         message(FATAL_ERROR "Project 'livox_laser_simulation' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'livox_laser_simulation' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/yjc/sentry_sim_ws/src/livox_laser_simulation/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'livox_laser_simulation' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/yjc/Sentry_sim/src/livox_laser_simulation/${idir}'.  ${_report}")
     endif()
     _list_append_unique(livox_laser_simulation_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yjc/sentry_sim_ws/devel/lib;/home/yjc/rm_ws/devel/lib;/home/yjc/catkin_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/yjc/Sentry_sim/devel/lib;/home/yjc/ws_livox/devel/lib;/home/yjc/Sentry_sim/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(livox_laser_simulation_LIBRARIES ${livox_laser_simulation_LIBRARIES})
 
   _list_append_unique(livox_laser_simulation_LIBRARY_DIRS ${${livox_laser_simulation_dep}_LIBRARY_DIRS})
-  list(APPEND livox_laser_simulation_EXPORTED_TARGETS ${${livox_laser_simulation_dep}_EXPORTED_TARGETS})
+  _list_append_deduplicate(livox_laser_simulation_EXPORTED_TARGETS ${${livox_laser_simulation_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

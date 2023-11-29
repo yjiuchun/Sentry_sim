@@ -1,4 +1,4 @@
-prefix=/home/yjc/sentry_sim_ws/devel
+prefix=/home/yjc/Sentry_sim/devel
 
 Name: sentry_laser_sim
 Description: Description of sentry_laser_sim

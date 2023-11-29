@@ -1,8 +1,8 @@
-# Install script for directory: /home/yjc/sentry_sim_ws/src/livox_laser_simulation
+# Install script for directory: /home/yjc/Sentry_sim/src/livox_laser_simulation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/yjc/sentry_sim_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/yjc/Sentry_sim/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/yjc/sentry_sim_ws/build/livox_laser_simulation/catkin_generated/installspace/livox_laser_simulation.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/yjc/Sentry_sim/build/livox_laser_simulation/catkin_generated/installspace/livox_laser_simulation.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/livox_laser_simulation/cmake" TYPE FILE FILES
-    "/home/yjc/sentry_sim_ws/build/livox_laser_simulation/catkin_generated/installspace/livox_laser_simulationConfig.cmake"
-    "/home/yjc/sentry_sim_ws/build/livox_laser_simulation/catkin_generated/installspace/livox_laser_simulationConfig-version.cmake"
+    "/home/yjc/Sentry_sim/build/livox_laser_simulation/catkin_generated/installspace/livox_laser_simulationConfig.cmake"
+    "/home/yjc/Sentry_sim/build/livox_laser_simulation/catkin_generated/installspace/livox_laser_simulationConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/livox_laser_simulation" TYPE FILE FILES "/home/yjc/sentry_sim_ws/src/livox_laser_simulation/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/livox_laser_simulation" TYPE FILE FILES "/home/yjc/Sentry_sim/src/livox_laser_simulation/package.xml")
 endif()
 

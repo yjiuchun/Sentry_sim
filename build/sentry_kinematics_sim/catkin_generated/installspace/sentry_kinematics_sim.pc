@@ -1,4 +1,4 @@
-prefix=/home/yjc/sentry_sim_ws/install
+prefix=/home/yjc/Sentry_sim/install
 
 Name: sentry_kinematics_sim
 Description: Description of sentry_kinematics_sim

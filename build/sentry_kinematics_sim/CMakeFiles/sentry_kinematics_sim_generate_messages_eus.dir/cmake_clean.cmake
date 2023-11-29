@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "/home/yjc/Sentry_sim/devel/share/roseus/ros/sentry_kinematics_sim/manifest.l"
+  "/home/yjc/Sentry_sim/devel/share/roseus/ros/sentry_kinematics_sim/msg/cmd_sentry.l"
   "CMakeFiles/sentry_kinematics_sim_generate_messages_eus"
-  "/home/yjc/sentry_sim_ws/devel/share/roseus/ros/sentry_kinematics_sim/msg/cmd_sentry.l"
-  "/home/yjc/sentry_sim_ws/devel/share/roseus/ros/sentry_kinematics_sim/manifest.l"
 )
 
 # Per-language clean rules from dependency scanning.

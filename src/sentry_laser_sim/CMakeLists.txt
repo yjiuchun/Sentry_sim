@@ -12,6 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   sensor_msgs
+  sentry_kinematics_sim
+  livox_ros_driver2 
+  geometry_msgs  
 )
 
 ## System dependencies are found with CMake's conventions
@@ -152,6 +155,13 @@ include_directories(
 # )
 add_executable(cp2cp_2 src/cp2cp_2.cpp)
 target_link_libraries(cp2cp_2 ${catkin_LIBRARIES})
+
+add_executable(simple_sentry_control src/control_simple_sentry.cpp)
+target_link_libraries(simple_sentry_control ${catkin_LIBRARIES})
+
+add_executable(pc2cm src/pc2cm.cpp)
+target_link_libraries(pc2cm ${catkin_LIBRARIES})
+
 #############
 ## Install ##
 #############

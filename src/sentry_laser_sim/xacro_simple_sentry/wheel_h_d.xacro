@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="sentry_wheel"   xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+
+<xacro:macro name="sentry_wheel" params="heading_name driving_name x y z">
+<link
+    name="${heading_name}_Link">
+    <inertial>
+      <origin
+        xyz="1.38777878078145E-17 0.00190966111212694 4.81482348435591E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.222633441059111" />
+      <inertia
+        ixx="0.000282472342479328"
+        ixy="8.75872742714748E-20"
+        ixz="-1.53578455491772E-11"
+        iyy="0.000299326883261327"
+        iyz="9.84844083127423E-11"
+        izz="0.000282445233574947" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Left_Front_Heading_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Left_Front_Heading_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="${heading_name}_Joint"
+    type="continuous">
+    <origin
+      xyz="${x} ${y} ${z}"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="${heading_name}_Link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+<link
+    name="${driving_name}_Link">
+    <inertial>
+      <origin
+        xyz="0.013 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.238918121305504" />
+      <inertia
+        ixx="0.000373309564539849"
+        ixy="2.69533146699333E-20"
+        ixz="-5.87276176762981E-21"
+        iyy="0.000200113836436801"
+        iyz="-1.19966360820855E-36"
+        izz="0.000200113836436801" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Left_Front_Driving_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Left_Front_Driving_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="${driving_name}_Joint"
+    type="revolute">
+    <origin
+      xyz="-0.013 -0.08 0"
+      rpy="0 0 0" />
+    <parent
+      link="${heading_name}_Link" />
+    <child
+      link="${driving_name}_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit lower="-1e9" upper="1e9" effort="10" velocity="70" />
+  </joint>
+
+  </xacro:macro>
+
+</robot>
+
+

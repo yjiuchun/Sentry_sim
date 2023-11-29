@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="simplesentry" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find sentry_laser_sim)/xacro_simple_sentry/chassis.xacro" />
+    <xacro:include filename="$(find sentry_laser_sim)/xacro_simple_sentry/yaw.xacro" />
+    <xacro:include filename="$(find sentry_laser_sim)/xacro_simple_sentry/pitch.xacro" />
+    <xacro:include filename="$(find sentry_laser_sim)/xacro_simple_sentry/laser_imu.xacro" />
+
+<!--trassimission-->
+  <xacro:macro name="joint_transmission" params="prefix">
+    <transmission name="trans_${prefix}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="${prefix}_actuator">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="${prefix}_Joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+<!--Joint-->
+  <!--Baselink_Joint-->
+  <joint name="Baselink_Joint" type="fixed">
+    <origin xyz="0 0 0.3" rpy="0 0 0" />
+    <parent link="base_footprint" />
+    <child link="base_link" />
+  </joint>
+
+  <!--Yaw_Joint-->
+  <joint
+    name="Yaw_Joint"
+    type="continuous">
+    <origin
+      xyz="3.2896E-05 0 0.09"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Yaw_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <!--Pitch_Joint-->
+  <joint
+    name="Pitch_Joint"
+    type="continuous">
+    <origin
+      xyz="0.0015147 0.019943 0.25044"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="Yaw_Link" />
+    <child
+      link="Pitch_Link" />
+    <axis
+      xyz="0.99713 0 0.075736" />
+  </joint>
+
+  <!--Laser_Imu_Joint-->
+  <joint
+    name="Laser_Imu_Joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Yaw_Link" />
+    <child
+      link="laser_link" />
+  </joint>
+
+  <!--fake_laser_joint-->
+  <joint
+    name="fake_laser_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.01"
+      rpy="0 0 0" />
+    <parent
+      link="laser_link" />
+    <child
+      link="laser_fake_link" />
+  </joint>
+
+<!--trassmission-->
+  <xacro:joint_transmission prefix="Yaw"/>
+  <xacro:joint_transmission prefix="Pitch"/>
+  <xacro:joint_transmission prefix="Heading_Left_Front"/>
+  <xacro:joint_transmission prefix="Driving_Left_Front"/>
+  <xacro:joint_transmission prefix="Heading_Left_Back"/>
+  <xacro:joint_transmission prefix="Driving_Left_Back"/>
+  <xacro:joint_transmission prefix="Heading_Right_Front"/>
+  <xacro:joint_transmission prefix="Driving_Right_Front"/>
+  <xacro:joint_transmission prefix="Heading_Right_Back"/>
+  <xacro:joint_transmission prefix="Driving_Right_Back"/>
+
+    <!-- controller -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+                <rosDebugLevel>Debug</rosDebugLevel>
+                <publishWheelTF>true</publishWheelTF>
+                <robotNamespace>/simple_sentry</robotNamespace>
+                <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+                <publishTf>1</publishTf>
+                <publishWheelJointState>true</publishWheelJointState>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>100.0</updateRate>
+                <legacyMode>true</legacyMode>
+                <odometryFrame>odom</odometryFrame> 
+                <odometryTopic>odom</odometryTopic> 
+    </plugin>
+  </gazebo> 
+
+</robot>

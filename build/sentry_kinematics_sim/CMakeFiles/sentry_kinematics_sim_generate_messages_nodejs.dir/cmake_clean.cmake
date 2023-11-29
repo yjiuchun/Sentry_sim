@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
+  "/home/yjc/Sentry_sim/devel/share/gennodejs/ros/sentry_kinematics_sim/msg/cmd_sentry.js"
   "CMakeFiles/sentry_kinematics_sim_generate_messages_nodejs"
-  "/home/yjc/sentry_sim_ws/devel/share/gennodejs/ros/sentry_kinematics_sim/msg/cmd_sentry.js"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "/home/yjc/Sentry_sim/devel/lib/sentry_kinematics_sim/chassis_control"
+  "/home/yjc/Sentry_sim/devel/lib/sentry_kinematics_sim/chassis_control.pdb"
   "CMakeFiles/chassis_control.dir/src/chassis_control.cpp.o"
-  "/home/yjc/sentry_sim_ws/devel/lib/sentry_kinematics_sim/chassis_control.pdb"
-  "/home/yjc/sentry_sim_ws/devel/lib/sentry_kinematics_sim/chassis_control"
 )
 
 # Per-language clean rules from dependency scanning.

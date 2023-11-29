@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import rospy
 from sentry_kinematics_sim.msg import cmd_sentry
@@ -129,7 +129,7 @@ if __name__=="__main__":
             vx = set_vel(vx,keys[pygame.K_w],keys[pygame.K_s],chassis_speed_add,speed_jian)
             vy = set_vel(vy,keys[pygame.K_a],keys[pygame.K_d],chassis_speed_add,speed_jian)
             wz = set_vel(wz,keys[pygame.K_q],keys[pygame.K_e],chassis_speed_add,speed_jian)
-            yaw = set_pos1(yaw,keys[pygame.K_j],keys[pygame.K_l],yaw_pos_add)
+            yaw = set_pos(yaw,keys[pygame.K_j],keys[pygame.K_l],yaw_pos_add)
             pitch = set_pos(pitch,keys[pygame.K_i],keys[pygame.K_k],pitch_pos_add)
             # break
             if keys[pygame.K_b]:

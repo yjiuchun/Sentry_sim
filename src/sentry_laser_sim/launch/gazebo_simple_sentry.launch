@@ -1,0 +1,64 @@
+<launch>
+        <!-- 设置launch文件的参数 -->
+    <arg name="world_name" value="$(find sentry_laser_sim)/world/rmuc_23.world"/>
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+
+        <!-- 运行gazebo仿真环境 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+
+	<!-- 加载机器人URDF/Xacro模型 -->
+    <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find sentry_laser_sim)/xacro_simple_sentry/simple_sentry.xacro'" />
+
+	<param name="robot_description" command="$(arg urdf_file)" />
+	<param name="use_gui" value="$(arg gui)"/>
+
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model simple_sentry" />
+
+
+    <!--加载控制器-->
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find sentry_laser_sim)/config/simple_sentry.yaml" command="load"/>
+ 
+  <!-- load the controllers -->
+   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/simple_sentry" args="joint_state_controller
+            Heading_Left_Front_controller
+	        Heading_Right_Front_controller
+            Heading_Left_Back_controller
+            Heading_Right_Back_controller
+            Driving_Left_Front_controller
+            Driving_Left_Back_controller
+            Driving_Right_Front_controller
+            Driving_Right_Back_controller
+            Yaw_controller
+            Pitch_controller"/>
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/simple_sentry/joint_states" />
+  </node>
+
+  <!--加载rviz-->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sentry_laser_sim)/rviz/test.rviz" required="true" /> -->
+
+  <!--加载点云转换程序-->
+  <node name="pc2pc_2" pkg="sentry_laser_sim" type="cp2cp_2" />
+
+  <!--静态坐标变换-->
+  <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0 0 0 0 1 ssimple_sentry::Laser_Imu_link laser_livox 100" />
+
+</launch>
+

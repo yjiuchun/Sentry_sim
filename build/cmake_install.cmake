@@ -1,8 +1,8 @@
-# Install script for directory: /home/yjc/sentry_sim_ws/src
+# Install script for directory: /home/yjc/Sentry_sim/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/yjc/sentry_sim_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/yjc/Sentry_sim/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,91 +49,92 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yjc/sentry_sim_ws/install/_setup_util.py")
+   "/home/yjc/Sentry_sim/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yjc/sentry_sim_ws/install" TYPE PROGRAM FILES "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/yjc/Sentry_sim/install" TYPE PROGRAM FILES "/home/yjc/Sentry_sim/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yjc/sentry_sim_ws/install/env.sh")
+   "/home/yjc/Sentry_sim/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yjc/sentry_sim_ws/install" TYPE PROGRAM FILES "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/yjc/Sentry_sim/install" TYPE PROGRAM FILES "/home/yjc/Sentry_sim/build/catkin_generated/installspace/env.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yjc/sentry_sim_ws/install/setup.bash;/home/yjc/sentry_sim_ws/install/local_setup.bash")
+   "/home/yjc/Sentry_sim/install/setup.bash;/home/yjc/Sentry_sim/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yjc/sentry_sim_ws/install" TYPE FILE FILES
-    "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/setup.bash"
-    "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/local_setup.bash"
+file(INSTALL DESTINATION "/home/yjc/Sentry_sim/install" TYPE FILE FILES
+    "/home/yjc/Sentry_sim/build/catkin_generated/installspace/setup.bash"
+    "/home/yjc/Sentry_sim/build/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yjc/sentry_sim_ws/install/setup.sh;/home/yjc/sentry_sim_ws/install/local_setup.sh")
+   "/home/yjc/Sentry_sim/install/setup.sh;/home/yjc/Sentry_sim/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yjc/sentry_sim_ws/install" TYPE FILE FILES
-    "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/setup.sh"
-    "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/local_setup.sh"
+file(INSTALL DESTINATION "/home/yjc/Sentry_sim/install" TYPE FILE FILES
+    "/home/yjc/Sentry_sim/build/catkin_generated/installspace/setup.sh"
+    "/home/yjc/Sentry_sim/build/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yjc/sentry_sim_ws/install/setup.zsh;/home/yjc/sentry_sim_ws/install/local_setup.zsh")
+   "/home/yjc/Sentry_sim/install/setup.zsh;/home/yjc/Sentry_sim/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yjc/sentry_sim_ws/install" TYPE FILE FILES
-    "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/setup.zsh"
-    "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/local_setup.zsh"
+file(INSTALL DESTINATION "/home/yjc/Sentry_sim/install" TYPE FILE FILES
+    "/home/yjc/Sentry_sim/build/catkin_generated/installspace/setup.zsh"
+    "/home/yjc/Sentry_sim/build/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yjc/sentry_sim_ws/install/.rosinstall")
+   "/home/yjc/Sentry_sim/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yjc/sentry_sim_ws/install" TYPE FILE FILES "/home/yjc/sentry_sim_ws/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/yjc/Sentry_sim/install" TYPE FILE FILES "/home/yjc/Sentry_sim/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/yjc/sentry_sim_ws/build/gtest/cmake_install.cmake")
-  include("/home/yjc/sentry_sim_ws/build/sentry_laser_sim/cmake_install.cmake")
-  include("/home/yjc/sentry_sim_ws/build/livox_laser_simulation/cmake_install.cmake")
-  include("/home/yjc/sentry_sim_ws/build/sentry_kinematics_sim/cmake_install.cmake")
+  include("/home/yjc/Sentry_sim/build/gtest/cmake_install.cmake")
+  include("/home/yjc/Sentry_sim/build/livox_laser_simulation/cmake_install.cmake")
+  include("/home/yjc/Sentry_sim/build/sentry_kinematics_sim/cmake_install.cmake")
+  include("/home/yjc/Sentry_sim/build/sentry_laser_sim/cmake_install.cmake")
+  include("/home/yjc/Sentry_sim/build/simplesentry/cmake_install.cmake")
 
 endif()
 
@@ -145,5 +146,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/yjc/sentry_sim_ws/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/yjc/Sentry_sim/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

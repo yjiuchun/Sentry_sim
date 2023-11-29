@@ -12,7 +12,9 @@
 # 如果机器人是圆的可以直接设置robot_radius参数
 #robot_radius: 0.2 
 # 如果机器人不是圆的设置footpoint参数     
-footprint: [[-0.1, 0.15], [0.1, 0.15], [0.1, -0.15], [-0.1, -0.15]]
+# footprint: [[-0.1, 0.15], [0.1, 0.15], [0.1, -0.15], [-0.1, -0.15]]
+footprint: [[0.0, 0.0], [0.0, 0.0], [0.0, -0.0], [-0.0, -0.0]]
+
 # 机器人轮廓边缘
 footprint_padding: 0.00
 # tf坐标转换时最大容忍的时间
@@ -44,7 +46,7 @@ obstacle_layer:
  observation_sources: laser_scan_sensor
  # making->是否这个观察用来标记障碍物
  # clearing->是否这个观察用来清除空闲空间
- laser_scan_sensor: {data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+ laser_scan_sensor: {data_type: PointCloud2, topic: /scan2, marking: true, clearing: true}
 
 # 静态地图层
 static_layer:

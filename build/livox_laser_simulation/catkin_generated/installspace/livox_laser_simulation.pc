@@ -1,4 +1,4 @@
-prefix=/home/yjc/sentry_sim_ws/install
+prefix=/home/yjc/Sentry_sim/install
 
 Name: livox_laser_simulation
 Description: Description of livox_laser_simulation

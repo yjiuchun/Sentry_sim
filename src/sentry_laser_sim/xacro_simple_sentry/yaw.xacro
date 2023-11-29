@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="sentry_yaw"   xmlns:xacro="http://www.ros.org/wiki/xacro">
+<link
+    name="Yaw_Link">
+    <inertial>
+      <origin
+        xyz="-0.000382893451164545 -0.00504114565025875 0.10698800887067"
+        rpy="0 0 0" />
+      <mass
+        value="10.3493804906921" />
+      <inertia
+        ixx="0.149218627722498"
+        ixy="0.000307277659773353"
+        ixz="0.000417481332867916"
+        iyy="0.153240882832408"
+        iyz="0.00549652703343564"
+        izz="0.0747791685099092" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Yaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Yaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

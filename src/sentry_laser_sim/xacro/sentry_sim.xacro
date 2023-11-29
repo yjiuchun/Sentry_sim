@@ -8,29 +8,29 @@
     <xacro:include filename="$(find sentry_laser_sim)/xacro/fun_define.xacro" />
 
 <!--base_link->wheel_l_f-->
-<xacro:myjoint_continuous joint_name="base_to_wheel_l_f" joint_type="continuous" x="0.1" y="0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link" child_link="wheel_l_f" ax="0" ay="1" az="0"/>
+<xacro:myjoint_continuous joint_name="base_to_wheel_l_f" joint_type="continuous" x="0.1" y="0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link_sentry" child_link="wheel_l_f" ax="0" ay="1" az="0"/>
 
 <!--base_link->wheel_r_f-->
-<xacro:myjoint_continuous joint_name="base_to_wheel_r_f" joint_type="continuous" x="0.1" y="-0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link" child_link="wheel_r_f" ax="0" ay="-1" az="0"/>
+<xacro:myjoint_continuous joint_name="base_to_wheel_r_f" joint_type="continuous" x="0.1" y="-0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link_sentry" child_link="wheel_r_f" ax="0" ay="-1" az="0"/>
 
 <!--base_link->wheel_l_b-->
-<xacro:myjoint_continuous joint_name="base_to_wheel_l_b" joint_type="continuous" x="-0.1" y="0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link" child_link="wheel_l_b" ax="0" ay="1" az="0"/>
+<xacro:myjoint_continuous joint_name="base_to_wheel_l_b" joint_type="continuous" x="-0.1" y="0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link_sentry" child_link="wheel_l_b" ax="0" ay="1" az="0"/>
 
 <!--base_link->wheel_r_b-->
-<xacro:myjoint_continuous joint_name="base_to_wheel_r_b" joint_type="continuous" x="-0.1" y="-0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link" child_link="wheel_r_b" ax="0" ay="-1" az="0"/>
+<xacro:myjoint_continuous joint_name="base_to_wheel_r_b" joint_type="continuous" x="-0.1" y="-0.125" z="0" wx="0" wy="0" wz="0" parent_link="base_link_sentry" child_link="wheel_r_b" ax="0" ay="-1" az="0"/>
 
 
 <!--base_footprint->base_link-->
-<xacro:myjoint_fixed joint_name="base_footprint_joint" joint_type="fixed" x="0" y="0" z="0.5" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link"/>
+<xacro:myjoint_fixed joint_name="base_footprint_joint" joint_type="fixed" x="0" y="0" z="0.1" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link_sentry"/>
 
 <!--base_footprint->laser_fake_link-->
-<xacro:myjoint_fixed joint_name="fake_laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link" child_link="laser_fake_link"/>
+<xacro:myjoint_fixed joint_name="fake_laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_fake_link"/>
 
 <!--base_link->camera_link-->
-<xacro:myjoint_fixed joint_name="imu_joint" joint_type="fixed" x="0.175" y="0" z="0" wx="0" wz="0" wy="0" parent_link="base_link" child_link="imu_link"/>
+<xacro:myjoint_fixed joint_name="imu_joint" joint_type="fixed" x="0.175" y="0" z="0" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="imu_link"/>
 
 <!--base_link->laser_link-->
-<xacro:myjoint_fixed joint_name="laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link" child_link="laser_link"/>
+<xacro:myjoint_fixed joint_name="laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_link"/>
 
 <!--camera_link->fake_link_kinect-->
 
@@ -91,8 +91,8 @@
 <gazebo>
 	<plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
 		<commandTopic>cmd_vel</commandTopic>
-                <odometryTopic>odom</odometryTopic> 
-           	<odometryFrame>odom</odometryFrame>
+            <odometryTopic>odom_sentry</odometryTopic> 
+           	<odometryFrame>odom_sentry</odometryFrame>
            	<leftFrontJoint>base_to_wheel_l_f</leftFrontJoint>
            	<rightFrontJoint>base_to_wheel_r_f</rightFrontJoint>
            	<leftRearJoint>base_to_wheel_l_b</leftRearJoint>

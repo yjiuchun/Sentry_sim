@@ -1,0 +1,57 @@
+simple_sentry:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 30
+  
+  # Position Controllers ---------------------------------------
+  Heading_Left_Front_controller:
+    type: effort_controllers/JointPositionController
+    joint: Heading_Left_Front_Joint
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+
+  Heading_Right_Front_controller:
+    type: effort_controllers/JointPositionController
+    joint: Heading_Right_Front_Joint
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+
+  Heading_Left_Back_controller:
+    type: effort_controllers/JointPositionController
+    joint: Heading_Left_Back_Joint
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+
+  Heading_Right_Back_controller:
+    type: effort_controllers/JointPositionController
+    joint: Heading_Right_Back_Joint
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+
+  Yaw_controller:
+    type: effort_controllers/JointPositionController
+    joint: Yaw_Joint
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+  Pitch_controller:
+    type: effort_controllers/JointPositionController
+    joint: Pitch_Joint
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+    #Velocity Controllers -------------------------------------
+
+  Driving_Left_Front_controller:
+    type: effort_controllers/JointVelocityController
+    joint: Driving_Left_Front_Joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  Driving_Left_Back_controller:
+    type: effort_controllers/JointVelocityController
+    joint: Driving_Left_Back_Joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  Driving_Right_Front_controller:
+    type: effort_controllers/JointVelocityController
+    joint: Driving_Right_Front_Joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  Driving_Right_Back_controller:
+    type: effort_controllers/JointVelocityController
+    joint: Driving_Right_Back_Joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+

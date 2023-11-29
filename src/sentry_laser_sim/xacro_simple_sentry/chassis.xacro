@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="sentry_chassis"   xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="2.3351E-07 0.00097091 0.015088"
+        rpy="0 0 0" />
+      <mass
+        value="6.9215" />
+      <inertia
+        ixx="0.27562"
+        ixy="3.4079E-06"
+        ixz="-1.9782E-08"
+        iyy="0.27371"
+        iyz="-0.00013381"
+        izz="0.54827" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+<link name="base_footprint">
+   </link>
+
+<!--加载轮系xacro-->
+<xacro:include filename="$(find sentry_laser_sim)/xacro_simple_sentry/wheel_h_d.xacro" />
+<xacro:sentry_wheel heading_name="Heading_Left_Front" driving_name="Driving_Left_Front" x='-0.19796' y= '0.19799' z='-0.02' />
+<xacro:sentry_wheel heading_name="Heading_Left_Back" driving_name="Driving_Left_Back" x='-0.19796' y= '-0.19799' z='-0.02' />
+<xacro:sentry_wheel heading_name="Heading_Right_Front" driving_name="Driving_Right_Front" x='0.19802' y= '0.19799' z='-0.02' />
+<xacro:sentry_wheel heading_name="Heading_Right_Back" driving_name="Driving_Right_Back" x='0.19802' y= '-0.19799' z='-0.02' />
+
+</robot>

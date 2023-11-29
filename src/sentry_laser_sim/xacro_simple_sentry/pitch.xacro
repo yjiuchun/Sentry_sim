@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="sentry_pitch"   xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link
+    name="Pitch_Link">
+    <inertial>
+      <origin
+        xyz="-0.00896541138540202 0.0169097992328111 0.118037914910391"
+        rpy="0 0 0" />
+      <mass
+        value="1.64398229715026" />
+      <inertia
+        ixx="0.00813629688390596"
+        ixy="6.73637561202836E-05"
+        ixz="0.000472677544890049"
+        iyy="0.00801271880973763"
+        iyz="-0.00088690601815744"
+        izz="0.00194896236802813" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Pitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_laser_sim/simple_meshes/Pitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

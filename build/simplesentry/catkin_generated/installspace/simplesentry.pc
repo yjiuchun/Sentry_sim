@@ -1,0 +1,8 @@
+prefix=/home/yjc/Sentry_sim/install
+
+Name: simplesentry
+Description: Description of simplesentry
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

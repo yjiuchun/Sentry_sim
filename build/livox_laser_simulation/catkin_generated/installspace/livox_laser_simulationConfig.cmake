@@ -67,14 +67,14 @@ set(livox_laser_simulation_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(livox_laser_simulation_SOURCE_PREFIX /home/yjc/sentry_sim_ws/src/livox_laser_simulation)
-  set(livox_laser_simulation_DEVEL_PREFIX /home/yjc/sentry_sim_ws/devel)
+  set(livox_laser_simulation_SOURCE_PREFIX /home/yjc/Sentry_sim/src/livox_laser_simulation)
+  set(livox_laser_simulation_DEVEL_PREFIX /home/yjc/Sentry_sim/devel)
   set(livox_laser_simulation_INSTALL_PREFIX "")
   set(livox_laser_simulation_PREFIX ${livox_laser_simulation_DEVEL_PREFIX})
 else()
   set(livox_laser_simulation_SOURCE_PREFIX "")
   set(livox_laser_simulation_DEVEL_PREFIX "")
-  set(livox_laser_simulation_INSTALL_PREFIX /home/yjc/sentry_sim_ws/install)
+  set(livox_laser_simulation_INSTALL_PREFIX /home/yjc/Sentry_sim/install)
   set(livox_laser_simulation_PREFIX ${livox_laser_simulation_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yjc/sentry_sim_ws/install/lib;/home/yjc/rm_ws/devel/lib;/home/yjc/catkin_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/yjc/Sentry_sim/install/lib;/home/yjc/ws_livox/devel/lib;/home/yjc/Sentry_sim/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(livox_laser_simulation_LIBRARIES ${livox_laser_simulation_LIBRARIES})
 
   _list_append_unique(livox_laser_simulation_LIBRARY_DIRS ${${livox_laser_simulation_dep}_LIBRARY_DIRS})
-  list(APPEND livox_laser_simulation_EXPORTED_TARGETS ${${livox_laser_simulation_dep}_EXPORTED_TARGETS})
+  _list_append_deduplicate(livox_laser_simulation_EXPORTED_TARGETS ${${livox_laser_simulation_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

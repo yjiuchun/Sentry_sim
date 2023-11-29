@@ -67,14 +67,14 @@ set(sentry_laser_sim_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(sentry_laser_sim_SOURCE_PREFIX /home/yjc/sentry_sim_ws/src/sentry_laser_sim)
-  set(sentry_laser_sim_DEVEL_PREFIX /home/yjc/sentry_sim_ws/devel)
+  set(sentry_laser_sim_SOURCE_PREFIX /home/yjc/Sentry_sim/src/sentry_laser_sim)
+  set(sentry_laser_sim_DEVEL_PREFIX /home/yjc/Sentry_sim/devel)
   set(sentry_laser_sim_INSTALL_PREFIX "")
   set(sentry_laser_sim_PREFIX ${sentry_laser_sim_DEVEL_PREFIX})
 else()
   set(sentry_laser_sim_SOURCE_PREFIX "")
   set(sentry_laser_sim_DEVEL_PREFIX "")
-  set(sentry_laser_sim_INSTALL_PREFIX /home/yjc/sentry_sim_ws/install)
+  set(sentry_laser_sim_INSTALL_PREFIX /home/yjc/Sentry_sim/install)
   set(sentry_laser_sim_PREFIX ${sentry_laser_sim_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yjc/sentry_sim_ws/install/lib;/home/yjc/rm_ws/devel/lib;/home/yjc/catkin_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/yjc/Sentry_sim/install/lib;/home/yjc/ws_livox/devel/lib;/home/yjc/Sentry_sim/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(sentry_laser_sim_LIBRARIES ${sentry_laser_sim_LIBRARIES})
 
   _list_append_unique(sentry_laser_sim_LIBRARY_DIRS ${${sentry_laser_sim_dep}_LIBRARY_DIRS})
-  list(APPEND sentry_laser_sim_EXPORTED_TARGETS ${${sentry_laser_sim_dep}_EXPORTED_TARGETS})
+  _list_append_deduplicate(sentry_laser_sim_EXPORTED_TARGETS ${${sentry_laser_sim_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")
