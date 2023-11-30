@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find sentry9)/xacro/sentry_laser.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_laser.xacro" />
 
   <xacro:property name="M_PI" value="3.14159"/> 
   <xacro:property name="laser_min_range" value="0.1"/>
@@ -55,7 +55,7 @@
           <visualize>${visualize}</visualize>
 		  <samples>${samples}</samples>
 		  <downsample>${downsample}</downsample>
-		  <csv_file_name>package://sentry9/scan_mode/mid360.csv</csv_file_name>
+		  <csv_file_name>package://sentry_laser_sim/scan_mode/mid360.csv</csv_file_name>
 		  <ros_topic>${ros_topic}</ros_topic>
         </plugin>
       </sensor>

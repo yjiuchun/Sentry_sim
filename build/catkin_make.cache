@@ -1,2 +1,2 @@
-livox_laser_simulation:sentry_kinematics_sim:sentry_laser_sim:simplesentry
+livox_laser_simulation:sentry_kinematics_sim:sentry_laser_sim
 -DCATKIN_DEVEL_PREFIX=/home/yjc/Sentry_sim/devel -DCMAKE_INSTALL_PREFIX=/home/yjc/Sentry_sim/install -G Unix Makefiles

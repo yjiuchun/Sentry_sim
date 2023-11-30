@@ -22,7 +22,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Left_Trigger_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Left_Trigger_Link.STL" />
       </geometry>
       <material
         name="">
@@ -36,7 +36,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Left_Trigger_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Left_Trigger_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -63,7 +63,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Rigth_Trigger_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Rigth_Trigger_Link.STL" />
       </geometry>
       <material
         name="">
@@ -77,7 +77,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Rigth_Trigger_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Rigth_Trigger_Link.STL" />
       </geometry>
     </collision>
   </link>

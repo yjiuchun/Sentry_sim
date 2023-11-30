@@ -22,7 +22,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Laser_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Laser_Link.STL" />
       </geometry>
       <material
         name="">
@@ -36,7 +36,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Laser_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Laser_Link.STL" />
       </geometry>
     </collision>
   </link>

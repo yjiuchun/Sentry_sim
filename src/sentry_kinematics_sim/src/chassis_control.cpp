@@ -106,7 +106,7 @@ void cmdvelCallback(const sentry_kinematics_sim::cmd_sentry& cmd_sentry)
   }
      Yaw_pos.data = rad_format( Yaw_pos.data);
   Pitch_pos.data = cmd_sentry.pitch_add;
-  ROS_INFO("current:%f || target:%f || send:%f",yaw,target_yaw,Yaw_pos.data);
+  // ROS_INFO("current:%f || target:%f || send:%f",yaw,target_yaw,Yaw_pos.data);
   //ROS_INFO("Wheel_angle:[%f,%f,%f,%f]-----Wheel_speed:[%f,%f,%f,%f]", angle1.data, angle2.data, angle3.data, angle4.data,speed1.data, speed2.data, speed3.data, speed4.data);
   //ROS_INFO("YAW:%f   Pitch:%f",Yaw_pos.data,Pitch_pos.data);
 }

@@ -156,11 +156,3 @@
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/pcl_msgs_generate_messages_cpp.dir
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/install/strip.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/install/local.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/install.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/list_install_components.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/rebuild_cache.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/edit_cache.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/test.dir
-/home/yjc/Sentry_sim/build/simplesentry/CMakeFiles/_catkin_empty_exported_target.dir

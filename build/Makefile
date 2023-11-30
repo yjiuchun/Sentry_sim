@@ -1584,19 +1584,6 @@ nodelet_topic_tools_gencfg/fast:
 	$(MAKE) -f sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir/build.make sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir/build
 .PHONY : nodelet_topic_tools_gencfg/fast
 
-#=============================================================================
-# Target rules for targets named _catkin_empty_exported_target
-
-# Build rule for target.
-_catkin_empty_exported_target: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _catkin_empty_exported_target
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	$(MAKE) -f simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/build.make simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1719,7 +1706,6 @@ help:
 	@echo "... dynamic_reconfigure_generate_messages_nodejs"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... nodelet_topic_tools_gencfg"
-	@echo "... _catkin_empty_exported_target"
 .PHONY : help
 
 

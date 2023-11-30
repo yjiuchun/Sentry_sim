@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_3310f/fast && /usr/bin/make -f CMakeFiles/cmTC_3310f.dir/build.make CMakeFiles/cmTC_3310f.dir/build
+Run Build Command(s):/usr/bin/make cmTC_32c37/fast && /usr/bin/make -f CMakeFiles/cmTC_32c37.dir/build.make CMakeFiles/cmTC_32c37.dir/build
 make[1]: 进入目录“/home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_3310f.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_3310f.dir/src.c.o   -c /home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_3310f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3310f.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_3310f.dir/src.c.o  -o cmTC_3310f 
-/usr/bin/ld: CMakeFiles/cmTC_3310f.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_32c37.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_32c37.dir/src.c.o   -c /home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_32c37
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32c37.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_32c37.dir/src.c.o  -o cmTC_32c37 
+/usr/bin/ld: CMakeFiles/cmTC_32c37.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_3310f.dir/build.make:87：cmTC_3310f] 错误 1
+make[1]: *** [CMakeFiles/cmTC_32c37.dir/build.make:87：cmTC_32c37] 错误 1
 make[1]: 离开目录“/home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp”
-make: *** [Makefile:121：cmTC_3310f/fast] 错误 2
+make: *** [Makefile:121：cmTC_32c37/fast] 错误 2
 
 
 Source file was:
@@ -41,18 +41,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_d36d7/fast && /usr/bin/make -f CMakeFiles/cmTC_d36d7.dir/build.make CMakeFiles/cmTC_d36d7.dir/build
+Run Build Command(s):/usr/bin/make cmTC_65660/fast && /usr/bin/make -f CMakeFiles/cmTC_65660.dir/build.make CMakeFiles/cmTC_65660.dir/build
 make[1]: 进入目录“/home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_d36d7.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d36d7.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d36d7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d36d7.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_d36d7.dir/CheckFunctionExists.c.o  -o cmTC_d36d7  -lpthreads 
+Building C object CMakeFiles/cmTC_65660.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_65660.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_65660
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_65660.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_65660.dir/CheckFunctionExists.c.o  -o cmTC_65660  -lpthreads 
 /usr/bin/ld: 找不到 -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_d36d7.dir/build.make:87：cmTC_d36d7] 错误 1
+make[1]: *** [CMakeFiles/cmTC_65660.dir/build.make:87：cmTC_65660] 错误 1
 make[1]: 离开目录“/home/yjc/Sentry_sim/build/CMakeFiles/CMakeTmp”
-make: *** [Makefile:121：cmTC_d36d7/fast] 错误 2
+make: *** [Makefile:121：cmTC_65660/fast] 错误 2
 
 
 

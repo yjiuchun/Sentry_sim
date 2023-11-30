@@ -134,7 +134,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/yjc/Sentry_sim/build/livox_laser_simulation/cmake_install.cmake")
   include("/home/yjc/Sentry_sim/build/sentry_kinematics_sim/cmake_install.cmake")
   include("/home/yjc/Sentry_sim/build/sentry_laser_sim/cmake_install.cmake")
-  include("/home/yjc/Sentry_sim/build/simplesentry/cmake_install.cmake")
 
 endif()
 

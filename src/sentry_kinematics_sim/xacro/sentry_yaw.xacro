@@ -23,7 +23,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Yaw_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Yaw_Link.STL" />
       </geometry>
       <material
         name="">
@@ -37,7 +37,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Yaw_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Yaw_Link.STL" />
       </geometry>
     </collision>
   </link>

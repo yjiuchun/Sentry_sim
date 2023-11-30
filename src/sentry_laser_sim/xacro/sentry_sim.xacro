@@ -32,54 +32,11 @@
 <!--base_link->laser_link-->
 <xacro:myjoint_fixed joint_name="laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_link"/>
 
-<!--camera_link->fake_link_kinect-->
+<link name="base_link">
+   </link>
+<xacro:myjoint_fixed joint_name="gmapping_joint" joint_type="fixed" x="0" y="0" z="0.0" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link"/>
 
-<!--Camera_Control-->
-  <!--gazebo reference="camera_link">
-    <material>Gazebo/Black</material>
-  </gazebo>
 
-  <gazebo reference="camera_link">
-    <sensor type="depth" name="camera_link">
-      <always_on>true</always_on>
-      <update_rate>30.0</update_rate>
-      <camera name="head">
-	<horizontal_fov>1.3962634</horizontal_fov>
-	<image>
-	  <width>1280</width>
-	  <height>720</height>
-	  <format>R8G8B8</format>
-	</image>
-	<clip>
-	  <near>0.02</near>
-	  <far>300</far>
-	</clip>
-	<noise>
-	  <type>gaussian</type>
-	  <mean>0.0</mean>
-	  <stddev>0.007</stddev>
-	</noise>
-      </camera>
-          <plugin name="kinect_Camera_controller" filename="libgazebo_ros_openni_kinect.so">
-              <cameraName>Kinect_camera</cameraName>
-              <alwaysOn>true</alwaysOn>
-              <updateRate>10</updateRate>
-              <imageTopicName>rgb/image_raw</imageTopicName>
-              <depthImageTopicName>depth/image_raw</depthImageTopicName>
-              <pointCloudTopicName>depth/points</pointCloudTopicName>
-              <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
-              <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
-              <frameName>fake_link_kinect</frameName>
-              <baseline>0.1</baseline>
-              <distortion_k1>0.0</distortion_k1>
-              <distortion_k2>0.0</distortion_k2>
-              <distortion_k3>0.0</distortion_k3>
-              <distortion_t1>0.0</distortion_t1>
-              <distortion_t2>0.0</distortion_t2>
-              <pointCloudCutoff>0.4</pointCloudCutoff>
-          </plugin>
-    </sensor>
-  </gazebo-->
 <!-- 每一个驱动轮都需要配置传动装置 -->
     <xacro:joint_trans joint_name="base_to_wheel_l_f"/>
     <xacro:joint_trans joint_name="base_to_wheel_l_b" />
@@ -91,8 +48,8 @@
 <gazebo>
 	<plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
 		<commandTopic>cmd_vel</commandTopic>
-            <odometryTopic>odom_sentry</odometryTopic> 
-           	<odometryFrame>odom_sentry</odometryFrame>
+            <odometryTopic>odom</odometryTopic> 
+           	<odometryFrame>odom</odometryFrame>
            	<leftFrontJoint>base_to_wheel_l_f</leftFrontJoint>
            	<rightFrontJoint>base_to_wheel_r_f</rightFrontJoint>
            	<leftRearJoint>base_to_wheel_l_b</leftRearJoint>
@@ -102,6 +59,4 @@
            	<broadcastTF>1</broadcastTF>
         </plugin>
     </gazebo>
-
-
 </robot>

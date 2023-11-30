@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="sentry" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find sentry9)/xacro/sentry_chassis_new.xacro" />
-    <xacro:include filename="$(find sentry9)/xacro/sentry_yaw.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_chassis_new.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_yaw.xacro" />
     <!--xacro:include filename="$(find sentry9)/xacro/sentry_laser.xacro" /-->
-    <xacro:include filename="$(find sentry9)/xacro/sentry_pitch.xacro" />
-    <xacro:include filename="$(find sentry9)/xacro/sentry_camera.xacro" />
-    <xacro:include filename="$(find sentry9)/xacro/sentry_imu.xacro" />
-    <xacro:include filename="$(find sentry9)/xacro/sentry_trigger.xacro" />
-    <xacro:include filename="$(find sentry9)/xacro/livox_sim.xacro"/>
-    <xacro:include filename="$(find sentry9)/xacro/sentry_wheel.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_pitch.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_camera.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_imu.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_trigger.xacro" />
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/livox_sim.xacro"/>
+    <xacro:include filename="$(find sentry_kinematics_sim)/xacro/sentry_wheel.xacro" />
 
     <!-- Yaw_Joint -->
   <joint

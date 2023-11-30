@@ -1,118 +1,197 @@
-测试环境1:ubuntu 18.04 melodic 
-测试环境2:ubunut 20.04 neotic
-	1) fatal error: ignition/math4/ignition/math.hh: 没有那个文件或目录
+<p align="center">  
+基于哨兵2023赛季导航的仿真  
+</p>
 
-		sudo apt-get install libignition-math4-dev
-		
-	2) 出现命名空间的一大堆问题
-		修改livox_laser_simulation功能包的cmakelistc++为17
-		（ubuntu20.04，gazebo11）
+# 环境
 
-注意修改:/sentry_sim_ws/src/sentry_laser_sim/world/rmuc_23.world 文件中的路径 107 & 129 行
+ros1 
+python = 3.8.10  
+open3d = 0.10.0.0  
+mumpy = 1.23.5  
+cmake = 3.14.3  
 
-1.livox_laser_simulation
-    livox雷达仿真功能包
-    运行官方提供的雷达仿真环境:
-		roslauch livox_laser_simulation livox_simulation.launch 
+# 介绍
+仿真主要包含三部分：livox仿真功能包、哨兵运动学仿真、哨兵导航仿真
+## livox仿真：*livox_laser_simulation*
+该功能包采用开源功能包: [livox_laser_simulation](https://github.com/Livox-SDK/livox_laser_simulation "title")  
+包含livox雷达仿真插件。  
 
-2.sentry_kinematics_sim
-    sp重装云台哨兵仿真,具有舵轮八自由度,yaw,pitch,左右拨弹轮.
-    运行仿真:
-		roslaunch sentry_kinematics_sim gazebo_xacro.launch 
-
-    加载底盘.yaw.pitch controller:
-		roslaunch sentry_kinematics_sim start.launch 
-
-    加载sentry控制节点, 接收 /cmd_vel 转换为底盘运动 & yaw,pitch运动:
-		rosrun sentry_kinematics_sim chassis_control 
-
-    加载键盘控制节点,通过键盘发布 /cmd_vel:
-		rosrun sentry_kinematics_sim key_cmd_new 
-
-3.sentry_laser_sim 
-    使用2中的哨兵在rm场地中作仿真对硬件要求较高,仿真跑的很慢,此功能包搭建简单四轮小车,用以模拟哨兵.
-    小车搭载mid_360仿真雷达. 具体参数修改可在/xacro/laser.xacro修改
-    运行gazebo仿真环境 & rviz 雷达仿真发布cloudpoint(/scan1),经过转换节点转为cloudpoint2(/scan2):
-		roslaunch sentry_laser_sim gazebo.launch 
-
-    配有imu插件,与pointcloud2不是同一个frame,在/xacro/imu.xacro配置
-    使用gmapping建图,目前没跑明白维哥代码,先跑个gmapping玩玩:
-	1)运行仿真
-		roslaunch sentry_laser_sim gazebo.launch
-
-	2)将三维点云 /scan2 转化为 Laserscan /scan
-	    安装cloudpoint2转Laserscan功能包:  (注意更改ros版本)
-		sudo apt-get install ros-melodic-pointcloud-to-laserscan 
-
-	    运行将cloudpoint2转为Laserscan:
-		roslaunch sentry_laser_sim cloutpoint2laserscan.launch
-
-	3)运行gmapping建图
-	    安装gmapping功能包:
-		sudo apt-get install ros-melodic-gmapping
-
-	    安装map_server功能包:
-		sudo apt install ros-melodic-map-server
-	  
-	    运行gmapping建图:
-		roslaunch sentry_laser_sim gmapping.launch
-	4)运行键盘节点
-		rosurn sentry_laser_sim key_cmd
-
-	5)说明
-	    执行完上述指令,可以在rviz里订阅map话题,可以看到建出的二维珊格地图,通过键盘移动小车可以进一步建图
-	    实测小车上坡时定位很容易飘
-	    保存地图:
-		rosrun map_server map_saver save_path map_name
-
-	    /map文件夹 有个地图
-
-    有了地图可以跑一下定位算法:amcl. 定位算法主要发布map->odom 矫正机器人位姿
-	1)安装amcl功能包
-
-		sudo apt-get install ros-kinetic-amcl
-
-	2)运行仿真环境
-
-		roslaunch sentry_laser_sim gazebo.launch
-
-	3)运行将cloudpoint2转为Laserscan:
-
-		roslaunch sentry_laser_sim cloutpoint2laserscan.launch
-
-	4)运行amcl:
-
-		roslaunch sentry_laser_sim amcl_test.launch
-
-    使用amcl做导航,move_base框架官方图就使用了amcl做定位.基于以上建立的二维地图 & amcl简单使用move_base框架.
-	1)安装move_base功能包
-		
-		sudo apt-get install ros-melodic-move-base
-
-	2)运行仿真环境
-
-		roslaunch sentry_laser_sim gazebo.launch
-
-	3)运行将cloudpoint2转为Laserscan:
-
-		roslaunch sentry_laser_sim cloutpoint2laserscan.launch
-
-	4)运行导航框架
-	
-		roslaunch sentry_laser_sim navigation_amcl.launch
-
-	5)说明
-	    rviz订阅map,里面点击2D NavGoal 再在地图上点一下,拖一下,确定目标位姿,小车会自动导航.
-	    相关参数在/config/navigation里面修改
+## 哨兵运动学仿真：*sentry_kinematics_sim* 
+基于实际重装云台哨兵仿真。包含舵轮，yaw，pitch，波弹轮等。编写了简单的运动控制。
 
 
-    跑通维哥代码:
-             
-		To be continued.........
-	
+![图片？没了？](./img/重装哨兵.png "重装哨兵") 
 
 
+## 哨兵雷达仿真：*sentry_laser_sim*
+雷达仿真期望使用开源livox仿真插件，实现哨兵在赛场环境的导航仿真。目前可以实现二维gmapping建图，基于amcl定位的move_base导航；基于fast_lio的建图定位导航。改功能包提供三种小车模型：基于麦轮的简单四轮小车；基于舵轮的简单版哨兵；基于舵轮的真实哨兵：
 
+.<img src="./img/简单小车.png" width="300" height="300" />
+.<img src="./img/simple_sentry.png" width="300" height="300" />
+.<img src="./img/重装哨兵.png" width="300" height="300" />
 
-    
-    
+在我电脑上跑后两个都较慢，传感器数据发布频率低，所以基本都采用简单小车模型。
+使用简单小车测试的rmuc地图点云，压缩的栅格地图，代价地图：
+
+.<img src="./img/pcd.png" width="300" height="300" />
+.<img src="./img/栅格.png" width="300" height="300" />
+.<img src="./img/代价地图.png" width="300" height="300" />
+
+# 部署
+## 导航代码部署
+### 下载编译2023哨兵导航代码： [sp_nav](https://github.com/TongjiSuperPower/sp_nav "title")  
+导航采用**mid-360**，发布数据类型为*CustomMsg*，为livox自定义的消息格式，采用了雷达仿真功能包只能发布*PointCloud*数据类型。仿真将*PointCloud*数据类型转为*PointCloud2*数据类型。为此我们需要将导航包中的雷达改为**velodyne**。具体地：  
+
+1.建图实际运行fast_lio功能包的：*Mapping_Mid360.launch* 将文件最开始加载的mid-360的yaml文件改为velodyne:  
+
+```
+<rosparam command="load" file="$(find fast_lio)/config/velodyne.yaml" />
+``` 
+  
+2.压缩点云为栅格地图运行了fast_lio功能包的：*relocalization_mid_360.launch*,改动如上：
+
+```
+<rosparam command="load" file="$(find fast_lio)/config/velodyne.yaml" />
+```
+
+3.导航实际运行fast_lio功能包的：*relocalization_nav.launch*,改动如上：
+
+```
+<rosparam command="load" file="$(find fast_lio)/config/velodyne.yaml" />
+```
+move_base可能因为是自定义局部规划器，所以目前原装导航move_base还会报一点错，将sp_planning功能包中的*relocalization_move_base。launch*改为：
+```
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	<param name="controller_frequency" value="10.0"/> 
+    	<param name="controller_patiente" value="15.0"/>
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/local_costmap_params.yaml" command="load"/>
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/global_costmap_params.yaml" command="load"/>
+
+    	<rosparam file="$(find sentry_laser_sim)/config/navigation/base_local_planner_params.yaml" command="load"/>
+    </node>
+```
+## 仿真代码部署
+### 下载编译本仓库：   
+```
+git clone https://github.com/yjiuchun/Sentry_sim.git
+cd Sentry_sim
+catkin_make
+```
+报错请看最后的错误指南
+
+# 运行
+## sentry_kinematics_sim
+```
+roslaunch sentry_kinematics_sim gazebo_xacro.launch 
+```
+会加载机器人模型，发布tf，加载各关节控制器，加载运动解算发布节点，加载键盘控制节点。
+
+## sentry_laser_sim
+
+### 加载简单小车仿真环境
+
+```
+roslaunch sentry_laser_sim gazebo.launch 
+```
+会加载四轮麦轮小车，搭载mid-360仿真雷达、仿真imu。
+雷达仿真发布点云为sensor_msgs/PointCloud类型，通过转换节点转为sensor_msgs/PointCloud2类型
+
+### 运行gmapping建图：
+gmapping接收sensor_msgs/LaserScan，需要将sensor_msgs/PointCloud2转为sensor_msgs/LaserSan。下载转换功能包：
+```
+sudo apt-get install ros-<你的ros版本>-pointcloud-to-laserscan 
+```
+下载gmapping功能包&map_server功能包：
+```
+sudo apt-get install ros-<你的ros版本>-gmapping
+sudo apt install ros-<你的ros版本>-map-server
+```
+运行gmapping建图（同时也会加载数据转换节点）:
+```
+roslaunch sentry_laser_sim gmapping.launch
+```
+运行键盘控制节点：
+```
+rosrun sentry_laser_sim key_cmd.py
+```
+保存地图：
+```
+rosrun map_server map_saver save_path map_name
+```
+
+通过键盘控制小车移动可以建图：  
+.<img src="./img/gmapping建图.png" width="300" height="300">  
+实测当小车上坡时，定位很容易飘。
+### 基于amcl定位
+
+下载amcl功能包：
+```
+sudo apt-get install ros-<你的ros版本>-amcl
+```
+启动amcl定位：
+```
+roslaunch sentry_laser_sim gazebo.launch
+roslaunch sentry_laser_sim amcl_test.launch
+```
+可以看到当前定位：  
+.<img src="./img/amcl.png" width="300" height="300">    
+
+### 基于amcl导航
+下载move_base功能包：
+```
+sudo apt-get install ros-<你的ros版本>-move-base
+```
+运行导航框架：
+```
+roslaunch sentry_laser_sim gazebo.launch
+roslaunch sentry_laser_sim navigation_amcl.launch
+```
+可以进行导航，但是上坡基本上不去：  
+.<img src="./img/nav_amcl.png" width="300" height="300"> 
+
+### 运行fast_lio建图
+运行建图：
+```
+roslaunch sentry_laser_sim gazebo.launch
+roslaunch fast_lio mapping_mid_360.launch
+rosrun sentry_laser_sim key_cmd.py
+```
+**fast_lio**在导航代码中。运行时记得source。记得更改雷达类型。  
+ctr + c fast_lio 终端，pcd将会保存在PCD文件夹下。  
+.<img src="./img/fast_lio_mapping.png" width="300" height="300">
+
+### 生成二维栅格地图
+在FAST_LIO文件夹的launch文件夹下运行：
+```
+./map_generate.sh
+./relocalization.sh
+```
+可以在map文件夹下生成栅格地图：  
+
+.<img src="./img/栅格.png" width="300" height="300">
+
+### 运行导航
+在FAST_LIO文件夹的launch文件夹下运行：
+```
+./relocalization_nav.sh
+```
+.<img src="./img/代价地图.png" width="300" height="300" />
+
+# 错误指南
+## fatal error: ignition/math4/ignition/math.hh: 没有那个文件或目录等
+```
+sudo apt-get install libignition-math4-dev
+```
+其他类似的可大概率是有啥东西没下载，百度一下下载就好了
+## 出现命名空间的一大堆问题
+查看c++版本，并将livox_laser_simulation 的cmakelists.txt的改为：
+```
+add_compile_options(-std=c++17)
+```
+c++17改为你的c++版本
+## 找不到文件等
+代码中可能有地方采用全局路径，需要把路径改为你电脑上的路径。比如要更改world文件夹的路径... ...
+

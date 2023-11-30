@@ -57,7 +57,6 @@ all: gtest/all
 all: livox_laser_simulation/all
 all: sentry_kinematics_sim/all
 all: sentry_laser_sim/all
-all: simplesentry/all
 
 .PHONY : all
 
@@ -66,7 +65,6 @@ preinstall: gtest/preinstall
 preinstall: livox_laser_simulation/preinstall
 preinstall: sentry_kinematics_sim/preinstall
 preinstall: sentry_laser_sim/preinstall
-preinstall: simplesentry/preinstall
 
 .PHONY : preinstall
 
@@ -80,7 +78,6 @@ clean: gtest/clean
 clean: livox_laser_simulation/clean
 clean: sentry_kinematics_sim/clean
 clean: sentry_laser_sim/clean
-clean: simplesentry/clean
 
 .PHONY : clean
 
@@ -294,24 +291,6 @@ sentry_laser_sim/clean: sentry_laser_sim/CMakeFiles/pcl_msgs_generate_messages_c
 sentry_laser_sim/clean: sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir/clean
 
 .PHONY : sentry_laser_sim/clean
-
-#=============================================================================
-# Directory level rules for directory simplesentry
-
-# Recursive "all" directory target.
-simplesentry/all:
-
-.PHONY : simplesentry/all
-
-# Recursive "preinstall" directory target.
-simplesentry/preinstall:
-
-.PHONY : simplesentry/preinstall
-
-# Recursive "clean" directory target.
-simplesentry/clean: simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/clean
-
-.PHONY : simplesentry/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/doxygen.dir
@@ -3265,33 +3244,6 @@ nodelet_topic_tools_gencfg: sentry_laser_sim/CMakeFiles/nodelet_topic_tools_genc
 sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir/clean:
 	$(MAKE) -f sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir/build.make sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir/clean
 .PHONY : sentry_laser_sim/CMakeFiles/nodelet_topic_tools_gencfg.dir/clean
-
-#=============================================================================
-# Target rules for target simplesentry/CMakeFiles/_catkin_empty_exported_target.dir
-
-# All Build rule for target.
-simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/all:
-	$(MAKE) -f simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/build.make simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/depend
-	$(MAKE) -f simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/build.make simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yjc/Sentry_sim/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
-.PHONY : simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/all
-
-# Build rule for subdir invocation for target.
-simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yjc/Sentry_sim/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yjc/Sentry_sim/build/CMakeFiles 0
-.PHONY : simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# clean rule for target.
-simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	$(MAKE) -f simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/build.make simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/clean
-.PHONY : simplesentry/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

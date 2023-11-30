@@ -36,7 +36,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Heading_Left_Front_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Heading_Left_Front_Link.STL" />
       </geometry>
       <material
         name="">
@@ -50,7 +50,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Heading_Left_Front_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Heading_Left_Front_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -91,7 +91,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Driving_Left_Front_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Driving_Left_Front_Link.STL" />
       </geometry>
       <material
         name="">
@@ -105,7 +105,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sentry9/meshes/Driving_Left_Front_Link.STL" />
+          filename="package://sentry_kinematics_sim/meshes/Driving_Left_Front_Link.STL" />
       </geometry>
     </collision>
   </link>

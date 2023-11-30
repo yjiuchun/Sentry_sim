@@ -25,11 +25,41 @@
 
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
         <param name="publish_frequency" type="double" value="20.0" />
-    </node>
+    </node> -->
 
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model sentry" />
+
+<!-- 加载控制器节点 -->
+<node name="chassis_control" pkg="sentry_kinematics_sim" type="chassis_control" />
+
+<!-- 加载键盘控制节点 -->
+
+<node name="key_cmd_new" pkg="sentry_kinematics_sim" type="key_cmd_new.py" />
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find sentry_kinematics_sim)/config/sentry.yaml" command="load"/>
+ 
+  <!-- load the controllers -->
+   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/sentry" args="joint_state_controller
+            Heading_Left_Front_controller
+	          Heading_Right_Front_controller
+            Heading_Left_Back_controller
+            Heading_Right_Back_controller
+            Driving_Left_Front_controller
+            Driving_Left_Back_controller
+            Driving_Right_Front_controller
+            Driving_Right_Back_controller
+            Yaw_controller
+            Pitch_controller"/>
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/sentry/joint_states" />
+  </node>
+
 <!--发布静态坐标-->
   <!--node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.0 0 0 0 1 Laser_Link sentry::Yaw_Link 100" /-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sentry_kinematics_sim)/rviz/rviz.rviz" required="true" />
