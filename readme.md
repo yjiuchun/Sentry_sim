@@ -33,9 +33,9 @@ cmake = 3.14.3
 在我电脑上跑后两个都较慢，传感器数据发布频率低，所以基本都采用简单小车模型。
 使用简单小车测试的rmuc地图点云，压缩的栅格地图，代价地图：
 
-.<img src="./img/pcd.png" width="300" height="300" />
-.<img src="./img/栅格.png" width="300" height="300" />
-.<img src="./img/代价地图.png" width="300" height="300" />
+.<img src="./img/pcd.png" width="200" height="200" />
+.<img src="./img/栅格.png" width="200" height="200" />
+.<img src="./img/代价地图.png" width="200" height="200" />
 
 # 部署
 ## 导航代码部署
@@ -83,15 +83,15 @@ catkin_make
 报错请看最后的错误指南
 
 # 运行
-## sentry_kinematics_sim
+## 1.sentry_kinematics_sim
 ```
 roslaunch sentry_kinematics_sim gazebo_xacro.launch 
 ```
 会加载机器人模型，发布tf，加载各关节控制器，加载运动解算发布节点，加载键盘控制节点。
 
-## sentry_laser_sim
+## 2.sentry_laser_sim
 
-### 加载简单小车仿真环境
+### (1)加载简单小车仿真环境
 
 ```
 roslaunch sentry_laser_sim gazebo.launch 
@@ -99,7 +99,7 @@ roslaunch sentry_laser_sim gazebo.launch
 会加载四轮麦轮小车，搭载mid-360仿真雷达、仿真imu。
 雷达仿真发布点云为sensor_msgs/PointCloud类型，通过转换节点转为sensor_msgs/PointCloud2类型
 
-### 运行gmapping建图：
+### (2)运行gmapping建图：
 gmapping接收sensor_msgs/LaserScan，需要将sensor_msgs/PointCloud2转为sensor_msgs/LaserSan。下载转换功能包：
 ```
 sudo apt-get install ros-<你的ros版本>-pointcloud-to-laserscan 
@@ -125,7 +125,7 @@ rosrun map_server map_saver save_path map_name
 通过键盘控制小车移动可以建图：  
 .<img src="./img/gmapping建图.png" width="300" height="300">  
 实测当小车上坡时，定位很容易飘。
-### 基于amcl定位
+### (3)基于amcl定位
 
 下载amcl功能包：
 ```
@@ -139,7 +139,7 @@ roslaunch sentry_laser_sim amcl_test.launch
 可以看到当前定位：  
 .<img src="./img/amcl.png" width="300" height="300">    
 
-### 基于amcl导航
+### (4)基于amcl导航
 下载move_base功能包：
 ```
 sudo apt-get install ros-<你的ros版本>-move-base
@@ -152,7 +152,7 @@ roslaunch sentry_laser_sim navigation_amcl.launch
 可以进行导航，但是上坡基本上不去：  
 .<img src="./img/nav_amcl.png" width="300" height="300"> 
 
-### 运行fast_lio建图
+### (5)运行fast_lio建图
 运行建图：
 ```
 roslaunch sentry_laser_sim gazebo.launch
@@ -163,7 +163,7 @@ rosrun sentry_laser_sim key_cmd.py
 ctr + c fast_lio 终端，pcd将会保存在PCD文件夹下。  
 .<img src="./img/fast_lio_mapping.png" width="300" height="300">
 
-### 生成二维栅格地图
+### (6)生成二维栅格地图
 在FAST_LIO文件夹的launch文件夹下运行：
 ```
 ./map_generate.sh
@@ -173,7 +173,7 @@ ctr + c fast_lio 终端，pcd将会保存在PCD文件夹下。
 
 .<img src="./img/栅格.png" width="300" height="300">
 
-### 运行导航
+### (7)运行导航
 在FAST_LIO文件夹的launch文件夹下运行：
 ```
 ./relocalization_nav.sh
