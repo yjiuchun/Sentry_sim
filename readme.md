@@ -26,9 +26,9 @@ cmake = 3.14.3
 ## 哨兵雷达仿真：*sentry_laser_sim*
 雷达仿真期望使用开源livox仿真插件，实现哨兵在赛场环境的导航仿真。目前可以实现二维gmapping建图，基于amcl定位的move_base导航；基于fast_lio的建图定位导航。改功能包提供三种小车模型：基于麦轮的简单四轮小车；基于舵轮的简单版哨兵；基于舵轮的真实哨兵：
 
-.<img src="./img/简单小车.png" width="300" height="300" />
-.<img src="./img/simple_sentry.png" width="300" height="300" />
-.<img src="./img/重装哨兵.png" width="300" height="300" />
+.<img src="./img/简单小车.png" width="200" height="200" />
+.<img src="./img/simple_sentry.png" width="200" height="200" />
+.<img src="./img/重装哨兵.png" width="200" height="200" />
 
 在我电脑上跑后两个都较慢，传感器数据发布频率低，所以基本都采用简单小车模型。
 使用简单小车测试的rmuc地图点云，压缩的栅格地图，代价地图：

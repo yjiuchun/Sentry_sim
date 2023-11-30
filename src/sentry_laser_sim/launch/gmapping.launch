@@ -1,38 +1,8 @@
 <launch>
     <arg name="scan_topic" default="scan" />
-
-    <!-- run pointcloud_to_laserscan node -->
-    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
- 
-        <remap from="cloud_in" to="/scan2"/>
-        
-        <rosparam>
-            # target_frame: rslidar # Leave disabled to output scan in pointcloud frame
-            transform_tolerance: 0.01
-            min_height: 0.0
-            max_height: 1.0
- 
-            angle_min: -3.1415926 # -M_PI
-            angle_max: 3.1415926 # M_PI
-            angle_increment: 0.01 # 0.57degree
-            scan_time: 0.1
-            range_min: 0.2
-            range_max: 100
-            use_inf: true
-            inf_epsilon: 1.0
- 
-            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
-            # 0 : Detect number of cores
-            # 1 : Single threaded
-            # 2->inf : Parallelism level
-            concurrency_level: 1
-        </rosparam>
- 
-    </node>
- 
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" clear_params="true">
-	<param name="base_frame" value="base_footprint"/>
-        <param name="odom_frame" value="odom"/>
+	<param name="base_frame" value="base_link"/>
+        <param name="odom_frame" value="odom_sentry"/>
         <param name="map_update_interval" value="5.0"/>
         <!-- Set maxUrange < actual maximum range of the Laser -->
         <param name="maxRange" value="5.0"/>
