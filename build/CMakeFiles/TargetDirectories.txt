@@ -111,6 +111,7 @@
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/install/strip.dir
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/install.dir
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/list_install_components.dir
+/home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/pointcloud_trans.dir
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/pc2cm.dir
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/rebuild_cache.dir
 /home/yjc/Sentry_sim/build/sentry_laser_sim/CMakeFiles/topic_tools_generate_messages_nodejs.dir

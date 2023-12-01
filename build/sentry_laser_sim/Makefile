@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/rule:
+	cd /home/yjc/Sentry_sim/build && $(MAKE) -f CMakeFiles/Makefile2 sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/rule
+.PHONY : sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/rule
+
+# Convenience name for target.
+pointcloud_trans: sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/rule
+
+.PHONY : pointcloud_trans
+
+# fast build rule for target.
+pointcloud_trans/fast:
+	cd /home/yjc/Sentry_sim/build && $(MAKE) -f sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/build.make sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/build
+.PHONY : pointcloud_trans/fast
+
+# Convenience name for target.
 sentry_laser_sim/CMakeFiles/pc2cm.dir/rule:
 	cd /home/yjc/Sentry_sim/build && $(MAKE) -f CMakeFiles/Makefile2 sentry_laser_sim/CMakeFiles/pc2cm.dir/rule
 .PHONY : sentry_laser_sim/CMakeFiles/pc2cm.dir/rule
@@ -863,6 +878,33 @@ src/pc2cm.cpp.s:
 	cd /home/yjc/Sentry_sim/build && $(MAKE) -f sentry_laser_sim/CMakeFiles/pc2cm.dir/build.make sentry_laser_sim/CMakeFiles/pc2cm.dir/src/pc2cm.cpp.s
 .PHONY : src/pc2cm.cpp.s
 
+src/pointcloud_trans.o: src/pointcloud_trans.cpp.o
+
+.PHONY : src/pointcloud_trans.o
+
+# target to build an object file
+src/pointcloud_trans.cpp.o:
+	cd /home/yjc/Sentry_sim/build && $(MAKE) -f sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/build.make sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/src/pointcloud_trans.cpp.o
+.PHONY : src/pointcloud_trans.cpp.o
+
+src/pointcloud_trans.i: src/pointcloud_trans.cpp.i
+
+.PHONY : src/pointcloud_trans.i
+
+# target to preprocess a source file
+src/pointcloud_trans.cpp.i:
+	cd /home/yjc/Sentry_sim/build && $(MAKE) -f sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/build.make sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/src/pointcloud_trans.cpp.i
+.PHONY : src/pointcloud_trans.cpp.i
+
+src/pointcloud_trans.s: src/pointcloud_trans.cpp.s
+
+.PHONY : src/pointcloud_trans.s
+
+# target to generate assembly for a file
+src/pointcloud_trans.cpp.s:
+	cd /home/yjc/Sentry_sim/build && $(MAKE) -f sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/build.make sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/src/pointcloud_trans.cpp.s
+.PHONY : src/pointcloud_trans.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -872,6 +914,7 @@ help:
 	@echo "... install/strip"
 	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... pointcloud_trans"
 	@echo "... pc2cm"
 	@echo "... rebuild_cache"
 	@echo "... topic_tools_generate_messages_nodejs"
@@ -926,6 +969,9 @@ help:
 	@echo "... src/pc2cm.o"
 	@echo "... src/pc2cm.i"
 	@echo "... src/pc2cm.s"
+	@echo "... src/pointcloud_trans.o"
+	@echo "... src/pointcloud_trans.i"
+	@echo "... src/pointcloud_trans.s"
 .PHONY : help
 
 

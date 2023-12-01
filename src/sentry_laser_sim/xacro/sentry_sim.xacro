@@ -32,9 +32,9 @@
 <!--base_link->laser_link-->
 <xacro:myjoint_fixed joint_name="laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_link"/>
 
-<link name="base_link">
+<!-- <link name="base_link">
    </link>
-<xacro:myjoint_fixed joint_name="gmapping_joint" joint_type="fixed" x="0" y="0" z="0.0" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link"/>
+<xacro:myjoint_fixed joint_name="gmapping_joint" joint_type="fixed" x="0" y="0" z="0.0" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link"/> -->
 
 
 <!-- 每一个驱动轮都需要配置传动装置 -->

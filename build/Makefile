@@ -1052,6 +1052,19 @@ chassis_control/fast:
 .PHONY : chassis_control/fast
 
 #=============================================================================
+# Target rules for targets named pointcloud_trans
+
+# Build rule for target.
+pointcloud_trans: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pointcloud_trans
+.PHONY : pointcloud_trans
+
+# fast build rule for target.
+pointcloud_trans/fast:
+	$(MAKE) -f sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/build.make sentry_laser_sim/CMakeFiles/pointcloud_trans.dir/build
+.PHONY : pointcloud_trans/fast
+
+#=============================================================================
 # Target rules for targets named pc2cm
 
 # Build rule for target.
@@ -1665,6 +1678,7 @@ help:
 	@echo "... sentry_kinematics_sim_generate_messages_py"
 	@echo "... sentry_kinematics_sim_genpy"
 	@echo "... chassis_control"
+	@echo "... pointcloud_trans"
 	@echo "... pc2cm"
 	@echo "... topic_tools_generate_messages_nodejs"
 	@echo "... topic_tools_generate_messages_lisp"

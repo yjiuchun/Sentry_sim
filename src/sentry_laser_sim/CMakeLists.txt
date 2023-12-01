@@ -162,6 +162,10 @@ target_link_libraries(simple_sentry_control ${catkin_LIBRARIES})
 add_executable(pc2cm src/pc2cm.cpp)
 target_link_libraries(pc2cm ${catkin_LIBRARIES})
 
+add_executable(pointcloud_trans src/pointcloud_trans.cpp)
+target_link_libraries(pointcloud_trans ${catkin_LIBRARIES})
+
+
 #############
 ## Install ##
 #############
