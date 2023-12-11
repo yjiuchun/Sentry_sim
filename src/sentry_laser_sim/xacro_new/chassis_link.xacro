@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chassis_link">
+<xacro:include filename="$(find sentry_laser_sim)/xacro_new/define_fun.xacro"/>
+<xacro:property name="link_name" value="chassis_link"/> 
+<xacro:property name="chassis_height" value="0.2"/>
+<xacro:property name="chassis_radius" value="0.3"/>
+
+
+<!-- link在坐标系的位置 -->
+<xacro:property name="pos_x" value="0"/>
+<xacro:property name="pos_y" value="0"/>
+<xacro:property name="pos_z" value="0"/>
+<xacro:property name="ang_x" value="0"/>
+<xacro:property name="ang_y" value="0"/>
+<xacro:property name="ang_z" value="0"/>
+
+
+<!-- link 颜色 -->
+<xacro:property name="color" value="red"/>
+<xacro:property name="color_r" value="255"/>
+<xacro:property name="color_g" value="0"/>
+<xacro:property name="color_b" value="0"/>
+<xacro:property name="color_a" value="1"/>
+
+
+<!-- link物理属性 -->
+<xacro:property name="mass" value="5"/>
+<xacro:property name="ixx" value="0.1"/>
+<xacro:property name="ixy" value="0"/>
+<xacro:property name="iyy" value="0.1"/>
+<xacro:property name="iyz" value="0"/>
+<xacro:property name="izz" value="0.1"/>
+<xacro:property name="ixz" value="0"/>
+
+
+
+
+
+<!--chassis_link-->
+<!-- 作为哨兵底盘，尺寸尽量相似，圆柱半径为0.3m -->
+
+<xacro:mylink_cyl link_name="${link_name}" l="${chassis_height}" r_="${chassis_radius}" x="${pos_x}" y="${pos_y}" z="${pos_z}" wx="${ang_x}" wy="${ang_y}" wz="${ang_z}" color="${color}" r="${color_r}" g="${color_g}" b="${color_b}" a="${color_a}" mass="${mass}" ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+
+
+<gazebo reference="chassis_link">
+        <material>Gazebo/Green</material>
+</gazebo>
+
+<link name="base_footprint">
+</link>
+
+</robot>

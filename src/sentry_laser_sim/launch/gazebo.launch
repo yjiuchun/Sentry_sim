@@ -31,8 +31,23 @@
   <!--运行cloudpoint to cloudpoint2 节点-->
   <node name="cp2cp_2_node" pkg="sentry_laser_sim" type="cp2cp_2"/>
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model sentry" />
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find sentry_laser_sim)/config/new_sentry.yaml" command="load"/>
+ 
+  <!-- load the controllers -->
+   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/sentry" args="joint_state_controller
+            Yaw_controller"/>
+
+<!-- 加载控制节点 -->
+  <node name="nav_control" pkg="sentry_laser_sim" type="nav_control" output="screen"/>
+
+<!-- 加载点云分割节点 -->
+  <node name="pcl2process" pkg="sentry_laser_sim" type="pcl2process" output="screen"/>
+
 <!--发布静态坐标-->
-  <!--node pkg="tf" type="static_transform_publisher" name="livox_tf_transform0" args="0 0 0.0 0 0 0 1 sentry::base_footprint odom 100" />
+  <!--node pkg="tf" type="static_transform_publisher" name="livox_tf_transform0" args="0 0 0.0 0 0 0 1 sentry::base_footpri nt odom 100" />
     <node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.0 0 0 0 1 laser_link laser_livox 100" /-->
     <!--node pkg="tf" type="static_transform_publisher" name="livox_tf_transform" args="0 0 0.05 0 0 0 1 sentry::base_footprint laser_livox 100" /-->
 

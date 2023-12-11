@@ -56,6 +56,7 @@
   <build_depend>sentry_kinematics_sim</build_depend>
   <build_depend>livox_ros_driver2</build_depend>
   <build_depend>geometry_msgs</build_depend>
+  <build_depend>control_msgs</build_depend>
 
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
@@ -68,6 +69,7 @@
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>livox_ros_driver2</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

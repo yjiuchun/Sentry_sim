@@ -15,7 +15,14 @@ find_package(catkin REQUIRED COMPONENTS
   sentry_kinematics_sim
   livox_ros_driver2 
   geometry_msgs  
+  control_msgs
+  cv_bridge
+  pcl_ros
+  eigen_conversions
 )
+
+find_package(OpenCV REQUIRED)
+find_package(PCL 1.8 REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -165,7 +172,14 @@ target_link_libraries(pc2cm ${catkin_LIBRARIES})
 add_executable(pointcloud_trans src/pointcloud_trans.cpp)
 target_link_libraries(pointcloud_trans ${catkin_LIBRARIES})
 
+add_executable(sentry_control src/sentry_control.cpp)
+target_link_libraries(sentry_control ${catkin_LIBRARIES})
 
+add_executable(nav_control src/nav_control.cpp)
+target_link_libraries(nav_control ${catkin_LIBRARIES})
+
+add_executable(pcl2process src/pcl2process.cpp)
+target_link_libraries(pcl2process ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############

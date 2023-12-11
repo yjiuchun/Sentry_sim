@@ -81,8 +81,6 @@ void cmdvelCallback(const sentry_kinematics_sim::cmd_sentry& cmd_sentry)
 
   Yaw_pos.data = cmd_sentry.yaw_add;
   Pitch_pos.data = cmd_sentry.pitch_add;
-
-
 }
 
 
@@ -93,16 +91,16 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "sentry_chassis_control");
     ros::NodeHandle nh;
     ros::Subscriber sub = nh.subscribe("/cmd_sentry", 1000, cmdvelCallback);
-    ros::Publisher pub_h_l_f = nh.advertise<std_msgs::Float64>("/simple_sentry/Heading_Left_Front_controller/command",1000);
-    ros::Publisher pub_h_l_b = nh.advertise<std_msgs::Float64>("/simple_sentry/Heading_Left_Back_controller/command",1000);
-    ros::Publisher pub_h_r_f = nh.advertise<std_msgs::Float64>("/simple_sentry/Heading_Right_Front_controller/command",1000);
-    ros::Publisher pub_h_r_b = nh.advertise<std_msgs::Float64>("/simple_sentry/Heading_Right_Back_controller/command",1000);
-    ros::Publisher pub_d_l_f = nh.advertise<std_msgs::Float64>("/simple_sentry/Driving_Left_Front_controller/command",1000);
-    ros::Publisher pub_d_l_b = nh.advertise<std_msgs::Float64>("/simple_sentry/Driving_Left_Back_controller/command",1000);
-    ros::Publisher pub_d_r_f = nh.advertise<std_msgs::Float64>("/simple_sentry/Driving_Right_Front_controller/command",1000);
-    ros::Publisher pub_d_r_b = nh.advertise<std_msgs::Float64>("/simple_sentry/Driving_Right_Back_controller/command",1000);
-    ros::Publisher yaw = nh.advertise<std_msgs::Float64>("/simple_sentry/Yaw_controller/command",1000);
-    ros::Publisher pitch = nh.advertise<std_msgs::Float64>("/simple_sentry/Pitch_controller/command",1000);
+    ros::Publisher pub_h_l_f = nh.advertise<std_msgs::Float64>("/sentry/Heading_Left_Front_controller/command",1000);
+    ros::Publisher pub_h_l_b = nh.advertise<std_msgs::Float64>("/sentry/Heading_Left_Back_controller/command",1000);
+    ros::Publisher pub_h_r_f = nh.advertise<std_msgs::Float64>("/sentry/Heading_Right_Front_controller/command",1000);
+    ros::Publisher pub_h_r_b = nh.advertise<std_msgs::Float64>("/sentry/Heading_Right_Back_controller/command",1000);
+    ros::Publisher pub_d_l_f = nh.advertise<std_msgs::Float64>("/sentry/Driving_Left_Front_controller/command",1000);
+    ros::Publisher pub_d_l_b = nh.advertise<std_msgs::Float64>("/sentry/Driving_Left_Back_controller/command",1000);
+    ros::Publisher pub_d_r_f = nh.advertise<std_msgs::Float64>("/sentry/Driving_Right_Front_controller/command",1000);
+    ros::Publisher pub_d_r_b = nh.advertise<std_msgs::Float64>("/sentry/Driving_Right_Back_controller/command",1000);
+    ros::Publisher yaw = nh.advertise<std_msgs::Float64>("/sentry/Yaw_controller/command",1000);
+    // ros::Publisher pitch = nh.advertise<std_msgs::Float64>("/simple_sentry/Pitch_controller/command",1000);
 
   VEHICLE_HALF_LENGTH.data = 0.178;
   VEHICLE_HALF_WIDTH.data = 0.178;
@@ -117,9 +115,10 @@ int main(int argc, char **argv)
   speed4.data = 0;
   Yaw_pos.data = 0;
   Pitch_pos.data = 0;
-  angle_offect.data = 0.19;
+  angle_offect.data = 0.0;
 
-    ros::Rate loop_rate(10); // 设置循环的频率，这里是10Hz
+  ros::Rate loop_rate(10); // 设置循环的频率，这里是10Hz
+  ROS_INFO("Start controlling your sentry!!!");
     while(ros::ok())
     {
         ros::spinOnce();
@@ -132,7 +131,8 @@ int main(int argc, char **argv)
         pub_d_r_b.publish(speed4);
         pub_d_l_f.publish(speed1);
         yaw.publish(Yaw_pos);
-        pitch.publish(Pitch_pos);
+        // pitch.publish(Pitch_pos);
+        ROS_INFO("vel1:%f  vel2:%f",speed1,speed2);
         loop_rate.sleep();
     }
     return 0;

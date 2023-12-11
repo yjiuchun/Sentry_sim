@@ -53,9 +53,9 @@ def set_vel(speed,k1,k2,add,_add):
     if k2:
         speed = speed - add
     if (k1 == 0)&(k2 == 0):
-        if speed > 0.03:
+        if speed > 0.3:
             speed = speed - _add
-        elif speed < -0.03:
+        elif speed < -0.3:
             speed = speed + _add
         else:
             speed = 0
@@ -80,9 +80,9 @@ def set_pos(pos,k1,k2,add):
 
 def set_pos1(pos,k1,k2,add):
     if k1:
-        pos = add
+        pos = add*10
     if k2:
-        pos = -add
+        pos = -add*5
     if k1==0&k2==0:
         pos = 0
     return pos
@@ -93,9 +93,9 @@ if __name__=="__main__":
     #settings = termios.tcgetattr(sys.stdin)
     rospy.init_node('sentry_cmd_key')
     pub = rospy.Publisher('/cmd_sentry', cmd_sentry, queue_size=5)
-    chassis_max_speed = 1
-    chassi_max_wz = 10
-    yaw_max_speed = 1
+    chassis_max_speed = 0.5
+    chassi_max_wz = 1
+    yaw_max_speed = 2
     chassis_speed_add = 0.05
     
     yaw_pos_add = 0.005
@@ -129,7 +129,7 @@ if __name__=="__main__":
             vx = set_vel(vx,keys[pygame.K_w],keys[pygame.K_s],chassis_speed_add,speed_jian)
             vy = set_vel(vy,keys[pygame.K_a],keys[pygame.K_d],chassis_speed_add,speed_jian)
             wz = set_vel(wz,keys[pygame.K_q],keys[pygame.K_e],chassis_speed_add,speed_jian)
-            yaw = set_pos(yaw,keys[pygame.K_j],keys[pygame.K_l],yaw_pos_add)
+            yaw = set_pos1(yaw,keys[pygame.K_j],keys[pygame.K_l],yaw_pos_add)
             pitch = set_pos(pitch,keys[pygame.K_i],keys[pygame.K_k],pitch_pos_add)
             # break
             if keys[pygame.K_b]:

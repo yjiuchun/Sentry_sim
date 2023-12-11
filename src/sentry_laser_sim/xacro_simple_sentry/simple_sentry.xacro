@@ -105,10 +105,8 @@
                 <publishTf>1</publishTf>
                 <publishWheelJointState>true</publishWheelJointState>
                 <alwaysOn>true</alwaysOn>
-                <updateRate>100.0</updateRate>
+                <updateRate>20.0</updateRate>
                 <legacyMode>true</legacyMode>
-                <odometryFrame>odom</odometryFrame> 
-                <odometryTopic>odom</odometryTopic> 
     </plugin>
   </gazebo> 
 

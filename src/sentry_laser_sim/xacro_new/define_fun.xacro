@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="body_define">
+<!-- 定义常量 -->
+<xacro:property name="PI" value="3.1415926535"/>
+
+<!-- 定义Link -->
+    <!-- 定义矩形Link -->
+    <xacro:macro name="mylink_tri" params="myname l w h x y z wx wy wz color r g b a mass ixx ixy ixz iyy iyz izz">
+        <link name="${myname}">
+        <visual>
+            <geometry>
+                <box size="${l} ${w} ${h}"/>
+            </geometry>
+            <origin xyz="${x} ${y} ${z}" rpy="${wx} ${wy} ${wz}"/>
+            <meterial name="${color}">
+                <color rgba="${r} ${g} ${b} ${a}"/>
+            </meterial>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${l} ${w} ${h}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="${mass}"/>
+            <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+        </inertial>
+        </link>
+    </xacro:macro>
+
+    <!-- 定义圆柱link -->
+    <xacro:macro name="mylink_cyl" params="link_name l r_ x y z wx wy wz color r g b a mass ixx ixy ixz iyy iyz izz">
+        <link name="${link_name}">
+            <visual>
+                <geometry>
+                    <cylinder length="${l}" radius="${r_}"/>
+                </geometry>
+                <origin xyz="${x} ${y} ${z}" rpy="${wx} ${wy} ${wz}"/>
+                <meterial name="${color}">
+                    <color rgba="${r} ${g} ${b} ${a}"/>
+                </meterial>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder length="${l}" radius="${r_}"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="${mass}"/>
+                <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+            </inertial>
+        </link>
+    </xacro:macro>
+
+<!-- 定义关节 -->
+    <!-- 定义fixed关节 -->
+    <xacro:macro name="myjoint_fixed" params="joint_name joint_type x y z wx wz wy parent_link child_link">
+        <joint name="${joint_name}" type="${joint_type}">
+            <origin xyz="${x} ${y} ${z}" rpy="${wx} ${wy} ${wz}"/>
+            <parent link="${parent_link}"/>
+            <child link="${child_link}"/>
+        </joint>
+    </xacro:macro>
+    <!-- 定义continuous关节 -->
+    <xacro:macro name="myjoint_continuous" params="joint_name joint_type x y z wx wy wz parent_link child_link ax ay az">
+	<joint name="${joint_name}" type="${joint_type}">
+		<origin xyz="${x} ${y} ${z}" rpy="${wx} ${wy} ${wz}"/>
+    		<parent link="${parent_link}" />
+    		<child link="${child_link}" />
+    		<axis xyz="${ax} ${ay} ${az}"/>
+	</joint>
+    </xacro:macro>
+
+<!-- 传动实现:用于连接控制器与关节 -->
+    <xacro:macro name="joint_trans" params="joint_name">
+    <transmission name="trans_${joint_name}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="${joint_name}_actuator">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="${joint_name}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+    </xacro:macro>
+
+</robot>
+
+    

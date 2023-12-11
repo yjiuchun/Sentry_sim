@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="car_laser">
 
     <xacro:include filename="$(find sentry_laser_sim)/xacro/base_link.xacro" />
-    <xacro:include filename="$(find sentry_laser_sim)/xacro/imu.xacro" />
+    <!-- <xacro:include filename="$(find sentry_laser_sim)/xacro/imu.xacro" /> -->
     <xacro:include filename="$(find sentry_laser_sim)/xacro/laser.xacro" />
     <xacro:include filename="$(find sentry_laser_sim)/xacro/wheel.xacro" />
     <xacro:include filename="$(find sentry_laser_sim)/xacro/fun_define.xacro" />
@@ -21,16 +21,18 @@
 
 
 <!--base_footprint->base_link-->
-<xacro:myjoint_fixed joint_name="base_footprint_joint" joint_type="fixed" x="0" y="0" z="0.1" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link_sentry"/>
+<xacro:myjoint_fixed joint_name="base_footprint_joint" joint_type="fixed" x="0" y="0" z="0.1" wx="0" wz="0.0" wy="0" parent_link="base_footprint" child_link="base_link_sentry"/>
 
 <!--base_footprint->laser_fake_link-->
-<xacro:myjoint_fixed joint_name="fake_laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_fake_link"/>
+<!-- <xacro:myjoint_fixed joint_name="fake_laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_fake_link"/> -->
 
 <!--base_link->camera_link-->
-<xacro:myjoint_fixed joint_name="imu_joint" joint_type="fixed" x="0.175" y="0" z="0" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="imu_link"/>
+<!-- <xacro:myjoint_fixed joint_name="imu_joint" joint_type="fixed" x="0.0" y="0" z="0" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="imu_link"/> -->
 
 <!--base_link->laser_link-->
-<xacro:myjoint_fixed joint_name="laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_link"/>
+<!-- <xacro:myjoint_fixed joint_name="laser_joint" joint_type="fixed" x="0" y="0" z="0.135" wx="0" wz="0" wy="0" parent_link="base_link_sentry" child_link="laser_link"/> -->
+
+<xacro:myjoint_continuous joint_name="yaw_joint" joint_type="continuous" x="0.05" y="0.0" z="0.135" wx="0" wy="0" wz="0" parent_link="base_link_sentry" child_link="laser_link" ax="0" ay="0" az="1"/>
 
 <!-- <link name="base_link">
    </link>
@@ -38,23 +40,37 @@
 
 
 <!-- 每一个驱动轮都需要配置传动装置 -->
-    <xacro:joint_trans joint_name="base_to_wheel_l_f"/>
-    <xacro:joint_trans joint_name="base_to_wheel_l_b" />
-    <xacro:joint_trans joint_name="base_to_wheel_r_f" />
-    <xacro:joint_trans joint_name="base_to_wheel_r_b" />
+    <xacro:joint_trans_v joint_name="base_to_wheel_l_f"/>
+    <xacro:joint_trans_v joint_name="base_to_wheel_l_b" />
+    <xacro:joint_trans_v joint_name="base_to_wheel_r_f" />
+    <xacro:joint_trans_v joint_name="base_to_wheel_r_b" />
+    <xacro:joint_trans_e joint_name="yaw_joint" />
 
- 
- 
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+                <rosDebugLevel>Debug</rosDebugLevel>
+                <publishWheelTF>true</publishWheelTF>
+                <robotNamespace>/sentry</robotNamespace>
+                <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+                <publishTf>1</publishTf>
+                <publishWheelJointState>true</publishWheelJointState>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>100.0</updateRate>
+                <legacyMode>true</legacyMode>
+    </plugin>
+  </gazebo>
+
 <gazebo>
 	<plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
 		<commandTopic>cmd_vel</commandTopic>
             <odometryTopic>odom</odometryTopic> 
            	<odometryFrame>odom</odometryFrame>
+            <robotNamespace>/sentry</robotNamespace>
            	<leftFrontJoint>base_to_wheel_l_f</leftFrontJoint>
            	<rightFrontJoint>base_to_wheel_r_f</rightFrontJoint>
            	<leftRearJoint>base_to_wheel_l_b</leftRearJoint>
-		<rightRearJoint>base_to_wheel_r_b</rightRearJoint>
-		<odometryRate>30</odometryRate>
+		    <rightRearJoint>base_to_wheel_r_b</rightRearJoint>
+		    <odometryRate>30</odometryRate>
            	<robotBaseFrame>base_footprint</robotBaseFrame>
            	<broadcastTF>1</broadcastTF>
         </plugin>

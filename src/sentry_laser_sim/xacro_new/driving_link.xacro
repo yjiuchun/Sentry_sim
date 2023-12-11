@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="driving_link">
+<xacro:include filename="$(find sentry_laser_sim)/xacro_new/define_fun.xacro"/>
+
+<!-- 四个舵，右前，左前，右后，左后依次标号为1，2，3，4 -->
+
+
+
+<xacro:property name="link_name1" value="driving_link1"/> 
+<xacro:property name="link_name2" value="driving_link2"/> 
+<xacro:property name="link_name3" value="driving_link3"/> 
+<xacro:property name="link_name4" value="driving_link4"/> 
+
+
+
+<xacro:property name="link_hight" value="0.02"/>
+<xacro:property name="link_radious" value="0.05"/>
+
+<!-- link在坐标系的位置 -->
+<xacro:property name="pos_x" value="0"/>
+<xacro:property name="pos_y" value="0"/>
+<xacro:property name="pos_z" value="0"/>
+<xacro:property name="ang_x" value="0"/>
+<xacro:property name="ang_y" value="0"/>
+<xacro:property name="ang_z" value="0"/>
+
+<!-- link 颜色 -->
+<xacro:property name="color" value="red"/>
+<xacro:property name="color_r" value="255"/>
+<xacro:property name="color_g" value="0"/>
+<xacro:property name="color_b" value="0"/>
+<xacro:property name="color_a" value="1"/>
+
+<!-- link物理属性 -->
+<xacro:property name="mass" value="0.2729799494341"/>
+<xacro:property name="ixx" value="0.000310662933362954"/>
+<xacro:property name="ixy" value="4.06306257516411E-05"/>
+<xacro:property name="iyy" value="1.84256237395161E-19"/>
+<xacro:property name="iyz" value="5.90527327364396E-19"/>
+<xacro:property name="izz" value="0.000304575420247696"/>
+<xacro:property name="ixz" value="1.84256237395161E-19"/>
+
+
+
+
+
+<!--heading_link-->
+<!-- 作为哨兵舵 -->
+
+<xacro:mylink_cyl link_name="${link_name1}" l="${link_hight}" r_="${link_radious}" x="${pos_x}" y="${pos_y}" z="${pos_z}" wx="${ang_x}" wy="${ang_y}" wz="${ang_z}" color="${color}" r="${color_r}" g="${color_g}" b="${color_b}" a="${color_a}" mass="${mass}" ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+<xacro:mylink_cyl link_name="${link_name2}" l="${link_hight}" r_="${link_radious}" x="${pos_x}" y="${pos_y}" z="${pos_z}" wx="${ang_x}" wy="${ang_y}" wz="${ang_z}" color="${color}" r="${color_r}" g="${color_g}" b="${color_b}" a="${color_a}" mass="${mass}" ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+<xacro:mylink_cyl link_name="${link_name3}" l="${link_hight}" r_="${link_radious}" x="${pos_x}" y="${pos_y}" z="${pos_z}" wx="${ang_x}" wy="${ang_y}" wz="${ang_z}" color="${color}" r="${color_r}" g="${color_g}" b="${color_b}" a="${color_a}" mass="${mass}" ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+<xacro:mylink_cyl link_name="${link_name4}" l="${link_hight}" r_="${link_radious}" x="${pos_x}" y="${pos_y}" z="${pos_z}" wx="${ang_x}" wy="${ang_y}" wz="${ang_z}" color="${color}" r="${color_r}" g="${color_g}" b="${color_b}" a="${color_a}" mass="${mass}" ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+
+<gazebo reference="${link_name1}">
+        <material>Gazebo/Yellow</material>
+</gazebo>
+
+<gazebo reference="${link_name2}">
+        <material>Gazebo/Yellow</material>
+</gazebo>
+
+<gazebo reference="${link_name3}">
+        <material>Gazebo/Yellow</material>
+</gazebo>
+
+<gazebo reference="${link_name4}">
+        <material>Gazebo/Yellow</material>
+</gazebo>
+
+</robot>
