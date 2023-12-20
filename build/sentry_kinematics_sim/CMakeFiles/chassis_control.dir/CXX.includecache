@@ -37,6 +37,26 @@ sentry_kinematics_sim/cmd_sentry.h
 -
 sensor_msgs/Imu.h
 -
+control_msgs/JointControllerState.h
+-
+
+/opt/ros/noetic/include/control_msgs/JointControllerState.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
 
 /opt/ros/noetic/include/geometry_msgs/Quaternion.h
 string

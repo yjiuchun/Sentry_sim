@@ -32,7 +32,7 @@
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model sentry" />
 
 <!-- 加载控制器节点 -->
-<node name="chassis_control" pkg="sentry_kinematics_sim" type="chassis_control" />
+<node name="chassis_control" pkg="sentry_kinematics_sim" type="chassis_control" output="screen"/>
 
 <!-- 加载键盘控制节点 -->
 

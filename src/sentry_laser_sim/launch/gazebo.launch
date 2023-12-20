@@ -1,6 +1,6 @@
 <launch>
     <!-- 设置launch文件的参数 -->
-    <arg name="world_name" value="$(find sentry_laser_sim)/world/rmuc_23.world"/>
+    <arg name="world_name" value="$(find sentry_laser_sim)/world/rmuc2023.world"/>
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="true"/>
@@ -41,7 +41,7 @@
             Yaw_controller"/>
 
 <!-- 加载控制节点 -->
-  <node name="nav_control" pkg="sentry_laser_sim" type="nav_control" output="screen"/>
+  <node name="nav_control" pkg="sentry_laser_sim" type="nav_control" />
 
 <!-- 加载点云分割节点 -->
   <node name="pcl2process" pkg="sentry_laser_sim" type="pcl2process" output="screen"/>

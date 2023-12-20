@@ -122,16 +122,16 @@ if __name__=="__main__":
 
             # 速度限位，防止速度增减过快
             if target_speed_x > control_speed_x:
-                control_speed_x = min( target_speed_x, control_speed_x + 0.02 )
+                control_speed_x = min( target_speed_x, control_speed_x + 0.05 )
             elif target_speed_x < control_speed_x:
-                control_speed_x = max( target_speed_x, control_speed_x - 0.02 )
+                control_speed_x = max( target_speed_x, control_speed_x - 0.05 )
             else:
                 control_speed_x = target_speed_x
 
             if target_speed_y > control_speed_y:
-                control_speed_y = min( target_speed_y, control_speed_y + 0.02 )
+                control_speed_y = min( target_speed_y, control_speed_y + 0.05 )
             elif target_speed_y < control_speed_y:
-                control_speed_y = max( target_speed_y, control_speed_y - 0.02 )
+                control_speed_y = max( target_speed_y, control_speed_y - 0.05 )
             else:
                 control_speed_y = target_speed_y
 

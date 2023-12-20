@@ -39,6 +39,7 @@
 <xacro:myjoint_fixed joint_name="gmapping_joint" joint_type="fixed" x="0" y="0" z="0.0" wx="0" wz="0" wy="0" parent_link="base_footprint" child_link="base_link"/> -->
 
 
+
 <!-- 每一个驱动轮都需要配置传动装置 -->
     <xacro:joint_trans_v joint_name="base_to_wheel_l_f"/>
     <xacro:joint_trans_v joint_name="base_to_wheel_l_b" />
@@ -71,7 +72,7 @@
            	<leftRearJoint>base_to_wheel_l_b</leftRearJoint>
 		    <rightRearJoint>base_to_wheel_r_b</rightRearJoint>
 		    <odometryRate>30</odometryRate>
-           	<robotBaseFrame>base_footprint</robotBaseFrame>
+           	<robotBaseFrame>base_link_sentry</robotBaseFrame>
            	<broadcastTF>1</broadcastTF>
         </plugin>
     </gazebo>

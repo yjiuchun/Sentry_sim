@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="imu">
 
 <!--camera_link-->
-<xacro:mylink_tri myname="imu_link" l="0.05" w="0.15" h="0.05" x="0" y="0" z="0.04" wx="0" wy="0" wz="0" color="red" r="0" g="0" b="0" a="1" mass="1" ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+<xacro:mylink_tri myname="imu_link" l="0.05" w="0.15" h="0.05" x="0" y="0" z="0.04" wx="0" wy="0" wz="0" color="red" r="0" g="0" b="0" a="1" mass="0.1" ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
 
 
 <gazebo reference="imu_link">

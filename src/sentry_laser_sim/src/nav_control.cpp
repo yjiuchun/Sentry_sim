@@ -99,18 +99,17 @@ yaw = std::atan2(siny_cosp, cosy_cosp);
 void imuCallback(const sensor_msgs::Imu& msg)
 {
 toEulerAngle(msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientation.w,imu_data.roll,imu_data.pitch,imu_data.yaw);
-ROS_INFO("%f,%f,%f",imu_data.yaw,imu_data.pitch,imu_data.roll);
+// ROS_INFO("%f,%f,%f",imu_data.yaw,imu_data.pitch,imu_data.roll);
 }
 
 void chassis_control()
 {
     std_msgs::Float64 vx_set; 
-    vx_set.data = cmd_sentry.linear.x * std::cos(yaw_relitive_angle ) - cmd_sentry.linear.y * std::sin(yaw_relitive_angle);
+    vx_set.data = cmd_sentry.linear.x * std::cos(yaw_relitive_angle ) - cmd_sentry.linear.y * std::sin(yaw_relitive_angle );
     std_msgs::Float64 vy_set; 
-    vy_set.data = cmd_sentry.linear.x * std::sin(yaw_relitive_angle ) + cmd_sentry.linear.y * std::cos(yaw_relitive_angle);
+    vy_set.data = cmd_sentry.linear.x * std::sin(yaw_relitive_angle ) + cmd_sentry.linear.y * std::cos(yaw_relitive_angle );
     std_msgs::Float64 wz_set;
     wz_set.data  = 0.0;
-
     geometry_msgs::Twist vel_msg;
 	  vel_msg.linear.x = vx_set.data;
     vel_msg.linear.y = vy_set.data;
@@ -125,7 +124,7 @@ void gimbal_control()
     static float absoulte_target = 0.0;
     static float absoulte_error = 0.0;
     absoulte_target = rad_format(absoulte_target + cmd_sentry.angular.z);
-    absoulte_error = rad_format(absoulte_target - imu_data.yaw);
+    absoulte_error = rad_format(absoulte_target - imu_data.yaw );
     absoulte_error = max_limit(absoulte_error,0.4);
     target_yaw = rad_format(yaw_relitive_angle + absoulte_error);
     Yaw_pos.data = target_yaw;

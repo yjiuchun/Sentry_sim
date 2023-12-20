@@ -6,6 +6,8 @@
 #include <iostream> 
 #include<sentry_kinematics_sim/cmd_sentry.h>
 #include<sensor_msgs/Imu.h>
+#include<control_msgs/JointControllerState.h>
+
 
 std_msgs::Float64MultiArray wheel_angle;
 std_msgs::Float64MultiArray wheel_speed;
@@ -35,8 +37,22 @@ float yaw;
 float pitch;
 float roll;
 
-//float my_pi = 3.141592653589793238462643383279;
+float my_pi = 3.141592653589793238462643383279;
 float target_yaw;
+float yaw_relitive_angle;
+
+float max_limit(float data,float max)
+{
+  if(data > max)
+  {
+    data = max;
+  }
+  else if(data < -max)
+  {
+    data = -max;
+  }
+  return data;
+}
 
 float rad_format(float rad)
 { 
@@ -56,61 +72,6 @@ float rad_format(float rad)
   }
   return rad;
 }
-
-void cmdvelCallback(const sentry_kinematics_sim::cmd_sentry& cmd_sentry)
-{
-	//ROS_INFO("Linear Components:[%f,%f,%f]",cmd_vel.linear.x,cmd_vel.linear.y,cmd_vel.linear.z);
-    std_msgs::Float64 vx_set; 
-    vx_set.data = cmd_sentry.vx;
-    std_msgs::Float64 vy_set; 
-    vy_set.data = cmd_sentry.vy;
-    std_msgs::Float64 wz_set;
-    wz_set.data  = cmd_sentry.wz;
-    std_msgs::Float64 para_xy, para_x,para_y;
-  para_xy.data = std::pow(vx_set.data, 2) + std::pow(vy_set.data, 2) + std::pow(VEHICLE_HALF_LENGTH.data * wz_set.data, 2) + std::pow(VEHICLE_HALF_WIDTH.data * wz_set.data, 2);
-  para_x.data = 2 * VEHICLE_HALF_WIDTH.data * wz_set.data * vx_set.data;
-  para_y.data = 2 * VEHICLE_HALF_LENGTH.data * wz_set.data * vy_set.data;
-
-  // 解算轮角度，atan2(y, x) = atan (y/x)
-  angle1.data = std::atan2(vy_set.data - VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data + VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data;
-  angle2.data = std::atan2(vy_set.data + VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data + VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data ;
-  angle3.data = std::atan2(vy_set.data - VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data - VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data ;
-  angle4.data = std::atan2(vy_set.data + VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data - VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data  ;
-  
-  speed1.data = std::sqrt((para_xy.data + para_x.data - para_y.data)) * speed_K.data;
-  speed2.data =  std::sqrt((para_xy.data + para_x.data + para_y.data)) * speed_K.data;
-  speed3.data =  std::sqrt((para_xy.data - para_x.data - para_y.data)) * speed_K.data;
-  speed4.data = std::sqrt((para_xy.data - para_x.data + para_y.data)) * speed_K.data;
-
-  target_yaw = cmd_sentry.yaw_add + target_yaw;
-  target_yaw = rad_format(target_yaw);
-  if((target_yaw - yaw) > 1.2)
-  {
-    Yaw_pos.data = Yaw_pos.data - 0.01 * (fabs(target_yaw - yaw)+1);
-    ROS_INFO("ok1");
-  }
-  else if((target_yaw - yaw) > 0.7)
-  {
-    Yaw_pos.data = Yaw_pos.data - 0.01 * (fabs(target_yaw - yaw)+0.1);
-    ROS_INFO("ok1");
-  }
-  if((target_yaw - yaw) < -1.2)
-  {
-    ROS_INFO("ok2");
-    Yaw_pos.data = Yaw_pos.data + 0.01*(fabs(target_yaw - yaw)+1);
-  }
-  else if((target_yaw - yaw) < -0.7)
-  {
-    ROS_INFO("ok2");
-    Yaw_pos.data = Yaw_pos.data + 0.01*(fabs(target_yaw - yaw)+0.1);
-  }
-     Yaw_pos.data = rad_format( Yaw_pos.data);
-  Pitch_pos.data = cmd_sentry.pitch_add;
-  // ROS_INFO("current:%f || target:%f || send:%f",yaw,target_yaw,Yaw_pos.data);
-  //ROS_INFO("Wheel_angle:[%f,%f,%f,%f]-----Wheel_speed:[%f,%f,%f,%f]", angle1.data, angle2.data, angle3.data, angle4.data,speed1.data, speed2.data, speed3.data, speed4.data);
-  //ROS_INFO("YAW:%f   Pitch:%f",Yaw_pos.data,Pitch_pos.data);
-}
-
 
 void toEulerAngle(float x,float y,float z,float w,float &roll,float &pitch,float &yaw)
 {
@@ -133,12 +94,61 @@ toEulerAngle(msg.orientation.x,msg.orientation.y,msg.orientation.z,msg.orientati
 //ROS_INFO("%f,%f,%f",yaw,pitch,roll);
 }
 
+void yawcallback(const control_msgs::JointControllerState& msg)
+{
+    yaw_relitive_angle = msg.process_value;
+}
+
+void cmdvelCallback(const sentry_kinematics_sim::cmd_sentry& cmd_sentry)
+{
+	//ROS_INFO("Linear Components:[%f,%f,%f]",cmd_vel.linear.x,cmd_vel.linear.y,cmd_vel.linear.z);
+    std_msgs::Float64 vx_set; 
+    vx_set.data = cmd_sentry.vx * std::cos(yaw_relitive_angle ) - cmd_sentry.vy * std::sin(yaw_relitive_angle);
+    std_msgs::Float64 vy_set; 
+    vy_set.data = cmd_sentry.vx * std::sin(yaw_relitive_angle ) + cmd_sentry.vy * std::cos(yaw_relitive_angle);
+    std_msgs::Float64 wz_set;
+    wz_set.data  = cmd_sentry.wz;
+    std_msgs::Float64 para_xy, para_x,para_y;
+  para_xy.data = std::pow(vx_set.data, 2) + std::pow(vy_set.data, 2) + std::pow(VEHICLE_HALF_LENGTH.data * wz_set.data, 2) + std::pow(VEHICLE_HALF_WIDTH.data * wz_set.data, 2);
+  para_x.data = 2 * VEHICLE_HALF_WIDTH.data * wz_set.data * vx_set.data;
+  para_y.data = 2 * VEHICLE_HALF_LENGTH.data * wz_set.data * vy_set.data;
+
+  // 解算轮角度，atan2(y, x) = atan (y/x)
+  angle1.data = std::atan2(vy_set.data - VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data + VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data;
+  angle2.data = std::atan2(vy_set.data + VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data + VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data ;
+  angle3.data = std::atan2(vy_set.data - VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data - VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data ;
+  angle4.data = std::atan2(vy_set.data + VEHICLE_HALF_LENGTH.data * wz_set.data, vx_set.data - VEHICLE_HALF_WIDTH.data * wz_set.data)+angle_offect.data  ;
+  
+  speed1.data = std::sqrt((para_xy.data + para_x.data - para_y.data)) * speed_K.data;
+  speed2.data =  std::sqrt((para_xy.data + para_x.data + para_y.data)) * speed_K.data;
+  speed3.data =  std::sqrt((para_xy.data - para_x.data - para_y.data)) * speed_K.data;
+  speed4.data = std::sqrt((para_xy.data - para_x.data + para_y.data)) * speed_K.data;
+
+
+    static float absoulte_target = 0.0;
+    static float absoulte_error = 0.0;
+    absoulte_target = rad_format(absoulte_target + cmd_sentry.yaw_add);
+    absoulte_error = rad_format(absoulte_target - yaw);
+    absoulte_error = max_limit(absoulte_error,0.4);
+    target_yaw = rad_format(yaw_relitive_angle + absoulte_error);
+    ROS_INFO("absoulte_angle:%f target_angle:%f relitive_angle:%f target_relitive:%f",yaw,absoulte_target,yaw_relitive_angle,target_yaw);
+
+    Yaw_pos.data = rad_format(target_yaw);
+    Pitch_pos.data = cmd_sentry.pitch_add;
+
+}
+
+
+
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "sentry_chassis_control");
     ros::NodeHandle nh;
     ros::Subscriber sub = nh.subscribe("/cmd_sentry", 1000, cmdvelCallback);
     ros::Subscriber sub_imu = nh.subscribe("/imu", 1000, imuCallback);
+    ros::Subscriber sub_yaw = nh.subscribe("/sentry/Yaw_controller/state",1000,yawcallback);
+
     ros::Publisher pub_h_l_f = nh.advertise<std_msgs::Float64>("/sentry/Heading_Left_Front_controller/command",1000);
     ros::Publisher pub_h_l_b = nh.advertise<std_msgs::Float64>("/sentry/Heading_Left_Back_controller/command",1000);
     ros::Publisher pub_h_r_f = nh.advertise<std_msgs::Float64>("/sentry/Heading_Right_Front_controller/command",1000);
@@ -147,8 +157,8 @@ int main(int argc, char **argv)
     ros::Publisher pub_d_l_b = nh.advertise<std_msgs::Float64>("/sentry/Driving_Left_Back_controller/command",1000);
     ros::Publisher pub_d_r_f = nh.advertise<std_msgs::Float64>("/sentry/Driving_Right_Front_controller/command",1000);
     ros::Publisher pub_d_r_b = nh.advertise<std_msgs::Float64>("/sentry/Driving_Right_Back_controller/command",1000);
-    ros::Publisher yaw = nh.advertise<std_msgs::Float64>("/sentry/Yaw_controller/command",1000);
-    ros::Publisher pitch = nh.advertise<std_msgs::Float64>("/sentry/Pitch_controller/command",1000);
+    ros::Publisher yawp = nh.advertise<std_msgs::Float64>("/sentry/Yaw_controller/command",1000);
+    ros::Publisher pitchp = nh.advertise<std_msgs::Float64>("/sentry/Pitch_controller/command",1000);
 
   VEHICLE_HALF_LENGTH.data = 0.178;
   VEHICLE_HALF_WIDTH.data = 0.178;
@@ -178,8 +188,8 @@ int main(int argc, char **argv)
         pub_d_r_f.publish(speed3);
         pub_d_r_b.publish(speed4);
         pub_d_l_f.publish(speed1);
-        yaw.publish(Yaw_pos);
-        pitch.publish(Pitch_pos);
+        yawp.publish(Yaw_pos);
+        pitchp.publish(Pitch_pos);
         loop_rate.sleep();
     }
     return 0;
